@@ -8,4 +8,6 @@
 5. https://www.youtube.com/watch?v=MOBAJb5nJRI
 6. https://www.youtube.com/watch?v=v3hTD9m2tM8&t
 7. https://www.youtube.com/watch?v=468Cxn1VuJk&list=PL3OV2Akk7XpDjlhJBDGav08bef_DvIdH2&index=4
-8. 
+8. https://github.com/learning3d
+9. https://learning3d.github.io/schedule.html
+10. 
