@@ -9,5 +9,10 @@
 6. https://www.youtube.com/watch?v=v3hTD9m2tM8&t
 7. https://www.youtube.com/watch?v=468Cxn1VuJk&list=PL3OV2Akk7XpDjlhJBDGav08bef_DvIdH2&index=4
 8. https://github.com/learning3d
-9. https://learning3d.github.io/schedule.html
-10. 
+9. https://geometric3d.github.io/
+10. https://learning3d.github.io/schedule.html
+11. https://www.scenerepresentations.org/courses/inverse-graphics-23/
+12. https://www-users.cse.umn.edu/~hspark/CSci5980/csci5980_3dvision.html
+13. https://github.com/mint-lab/3dv_tutorial
+14. https://uni-tuebingen.de/fakultaeten/mathematisch-naturwissenschaftliche-fakultaet/fachbereiche/informatik/lehrstuehle/autonomous-vision/lectures/computer-vision/
+15. 
