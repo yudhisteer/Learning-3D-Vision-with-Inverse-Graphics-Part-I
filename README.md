@@ -1,7 +1,20 @@
 # Rendering basics with Pytorch3D
 
 ## Plan of Action
+
+1. Meshing Around
+
+
+
+
 -------------------------
+## 1. Meshing Around
+
+
+
+
+-------------------------
+
 
 
 
