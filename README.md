@@ -1,5 +1,11 @@
 # Rendering basics with Pytorch3D
 
+## Plan of Action
+-------------------------
+
+
+
+-------------------------
 ## References
 1. https://www.andrew.cmu.edu/course/16-889/projects/soyongs/proj1/#7bb6d565-adac-4051-9905-55eab2b2acaf
 2. https://www.educative.io/courses/3d-machine-learning-with-pytorch3d
