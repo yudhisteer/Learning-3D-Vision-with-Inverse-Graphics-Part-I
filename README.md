@@ -21,4 +21,4 @@
 12. https://www-users.cse.umn.edu/~hspark/CSci5980/csci5980_3dvision.html
 13. https://github.com/mint-lab/3dv_tutorial
 14. https://uni-tuebingen.de/fakultaeten/mathematisch-naturwissenschaftliche-fakultaet/fachbereiche/informatik/lehrstuehle/autonomous-vision/lectures/computer-vision/
-15. 
+15. https://www.youtube.com/watch?v=_M21DcHaMrg&list=PLZk0jtN0g8e_4gGYEpm1VYPh8xNka66Jt&index=6
