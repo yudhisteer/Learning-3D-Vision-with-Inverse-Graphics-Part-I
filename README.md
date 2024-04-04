@@ -1,4 +1,4 @@
-# Rendering basics with Pytorch3D
+# Rendering Basics with Pytorch3D
 
 ## Plan of Action
 
