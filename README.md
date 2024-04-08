@@ -11,7 +11,9 @@
 -------------------------
 ## 1. Meshing Around
 
+![image](https://github.com/yudhisteer/Rendering-Basics-with-PyTorch3D/assets/59663734/1ecc27b6-eb66-47df-9bdf-612e59bd07f0)
 
+![mesh_1](https://github.com/yudhisteer/Rendering-Basics-with-PyTorch3D/assets/59663734/13530bfd-e088-4839-a805-53054a52aea5)
 
 
 -------------------------
