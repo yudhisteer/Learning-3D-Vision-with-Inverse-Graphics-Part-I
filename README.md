@@ -1,6 +1,4 @@
-
-https://github.com/yudhisteer/Rendering-Basics-with-PyTorch3D/assets/59663734/ecaed6a1-f0ce-4267-bb5b-b5e8a2078594
-![square_mesh_11](https://github.com/yudhisteer/Rendering-Basics-with-PyTorch3D/assets/59663734/158e1782-7628-4cb8-ae46-03f8d071ca70)# Rendering Basics with PyTorch3D
+# Rendering-Basics-with-PyTorch3D
 
 ## Plan of Action
 
@@ -36,14 +34,6 @@ https://github.com/yudhisteer/Rendering-Basics-with-PyTorch3D/assets/59663734/ec
 ![square_mesh_9](https://github.com/yudhisteer/Rendering-Basics-with-PyTorch3D/assets/59663734/0169c30c-ae4d-48b3-8fbd-352070a6741c)
 ![square_mesh_10](https://github.com/yudhisteer/Rendering-Basics-with-PyTorch3D/assets/59663734/79857298-9029-4251-bce7-6ed8d13504d8)
 ![square_mesh_11](https://github.com/yudhisteer/Rendering-Basics-with-PyTorch3D/assets/59663734/64cc9fac-6f51-40a4-ab2e-092afc10844a)
-![triangle_mesh](https://github.com/yudhisteer/Rendering-Basics-with-PyTorch3D/assets/59663734/5b590a7e-9488-4e7b-b681-2d45e1cf049f)
-
-
-
-
-
-
-
 
 
 
