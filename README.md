@@ -3,12 +3,21 @@
 ## Plan of Action
 
 1. Meshing Around
+2. Photorealism Spectrum (Rendering)
 
 
 
 
 -------------------------
 ## 1. Meshing Around
+
+
+
+
+-------------------------
+## 2. Photorealism Spectrum (Rendering)
+
+
 
 
 
