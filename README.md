@@ -45,3 +45,4 @@
 14. https://uni-tuebingen.de/fakultaeten/mathematisch-naturwissenschaftliche-fakultaet/fachbereiche/informatik/lehrstuehle/autonomous-vision/lectures/computer-vision/
 15. https://www.youtube.com/watch?v=_M21DcHaMrg&list=PLZk0jtN0g8e_4gGYEpm1VYPh8xNka66Jt&index=6
 16. https://learn.udacity.com/courses/cs291
+17. https://madebyevan.com/webgl-path-tracing/
