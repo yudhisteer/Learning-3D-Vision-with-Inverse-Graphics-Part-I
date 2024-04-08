@@ -17,6 +17,15 @@
 ![gif_1](https://github.com/yudhisteer/Rendering-Basics-with-PyTorch3D/assets/59663734/8aa00eb7-2e95-4a59-84b8-1502aec647aa)
 
 
+```python
+# Triangle Mesh
+vertices = torch.tensor([[-1, 0, 0], [1, 0, 0], [0, 1, 0]], dtype=torch.float32)
+faces = torch.tensor([[0, 1, 2]], dtype=torch.int64)
+filename = "triangle_mesh.gif"
+num_views = 30
+triangle_mesh = MeshGifRenderer(vertices=vertices, faces=faces)
+triangle_mesh.gif_renderer(filename=filename, num_views=num_views)
+```
 
 -------------------------
 ## 2. Photorealism Spectrum (Rendering)
