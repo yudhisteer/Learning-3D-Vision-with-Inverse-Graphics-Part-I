@@ -2,13 +2,14 @@
 
 ## Plan of Action
 
-1. Meshing Around
-2. Photorealism Spectrum (Rendering)
+1. [Meshing Around](#ma)
+2. [Photorealism Spectrum](#ps)
 
 
 
 
 -------------------------
+<a name="ma"></a>
 ## 1. Meshing Around
 
 ![image](https://github.com/yudhisteer/Rendering-Basics-with-PyTorch3D/assets/59663734/1ecc27b6-eb66-47df-9bdf-612e59bd07f0)
@@ -27,10 +28,6 @@ triangle_mesh = MeshGifRenderer(vertices=vertices, faces=faces)
 triangle_mesh.gif_renderer(filename=filename, num_views=num_views)
 ```
 
--------------------------
-## 2. Photorealism Spectrum (Rendering)
-
-
 ![square_mesh_0](https://github.com/yudhisteer/Rendering-Basics-with-PyTorch3D/assets/59663734/5c2ffa90-5a6a-423e-8e49-6778bb92dbdf)
 ![square_mesh_1](https://github.com/yudhisteer/Rendering-Basics-with-PyTorch3D/assets/59663734/4c93c08a-9af8-47b6-9bed-7f9b9c9de148)
 ![square_mesh_2](https://github.com/yudhisteer/Rendering-Basics-with-PyTorch3D/assets/59663734/10b999ac-2477-42cc-9bfb-e4e4810fdd92)
@@ -43,6 +40,13 @@ triangle_mesh.gif_renderer(filename=filename, num_views=num_views)
 ![square_mesh_9](https://github.com/yudhisteer/Rendering-Basics-with-PyTorch3D/assets/59663734/0169c30c-ae4d-48b3-8fbd-352070a6741c)
 ![square_mesh_10](https://github.com/yudhisteer/Rendering-Basics-with-PyTorch3D/assets/59663734/79857298-9029-4251-bce7-6ed8d13504d8)
 ![square_mesh_11](https://github.com/yudhisteer/Rendering-Basics-with-PyTorch3D/assets/59663734/64cc9fac-6f51-40a4-ab2e-092afc10844a)
+
+
+
+
+-------------------------
+<a name="ps"></a>
+## 2. Photorealism Spectrum
 
 
 
