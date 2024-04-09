@@ -12,10 +12,14 @@
 <a name="ma"></a>
 ## 1. Meshing Around
 
-![image](https://github.com/yudhisteer/Rendering-Basics-with-PyTorch3D/assets/59663734/1ecc27b6-eb66-47df-9bdf-612e59bd07f0)
+<p align="center">
+  <img src="https://github.com/yudhisteer/Rendering-Basics-with-PyTorch3D/assets/59663734/1ecc27b6-eb66-47df-9bdf-612e59bd07f0" width="40%" />
+</p>
 
 
-![gif_1](https://github.com/yudhisteer/Rendering-Basics-with-PyTorch3D/assets/59663734/8aa00eb7-2e95-4a59-84b8-1502aec647aa)
+<p align="center">
+  <img src="https://github.com/yudhisteer/Rendering-Basics-with-PyTorch3D/assets/59663734/8aa00eb7-2e95-4a59-84b8-1502aec647aa" width="20%" />
+</p>
 
 
 ```python
