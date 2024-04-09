@@ -54,7 +54,10 @@ Now that we have built a triangular mesh. We can use this as a base to create mo
 ![square_mesh_10](https://github.com/yudhisteer/Rendering-Basics-with-PyTorch3D/assets/59663734/79857298-9029-4251-bce7-6ed8d13504d8)
 ![square_mesh_11](https://github.com/yudhisteer/Rendering-Basics-with-PyTorch3D/assets/59663734/64cc9fac-6f51-40a4-ab2e-092afc10844a)
 
+### 1.1 Implicit Surfaces
 
+
+### 1.2 Explicit Surfaces
 
 
 -------------------------
