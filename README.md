@@ -1,4 +1,4 @@
-# Rendering-Basics-with-PyTorch3D
+# Learning for 3D Vision with Inverse Graphics
 
 ## Plan of Action
 
