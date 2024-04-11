@@ -4,6 +4,7 @@
 
 1. [Meshing Around](#ma)
 2. [Photorealism Spectrum](#ps)
+3. Differential Rendering
 
 
 
