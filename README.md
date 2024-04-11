@@ -4,7 +4,7 @@
 
 1. [Meshing Around](#ma)
 2. [Photorealism Spectrum](#ps)
-3. Differential Rendering
+3. [Differential Rendering](#dr)
 
 
 
@@ -68,7 +68,9 @@ Now that we have built a triangular mesh. We can use this as a base to create mo
 
 
 
-
+-------------------------
+<a name="dr"></a>
+## 3. Differential Rendering
 
 
 
