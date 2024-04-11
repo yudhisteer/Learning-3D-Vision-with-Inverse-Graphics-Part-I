@@ -75,7 +75,7 @@ Now that we have built a triangular mesh. We can use this as a base to create mo
 
 -------------------------
 ## References
-1. https://www.andrew.cmu.edu/course/16-889/projects/soyongs/proj1/#7bb6d565-adac-4051-9905-55eab2b2acaf
+1. https://www.andrew.cmu.edu/course/16-889/projects/
 2. https://www.educative.io/courses/3d-machine-learning-with-pytorch3d
 3. https://towardsdatascience.com/how-to-render-3d-files-using-pytorch3d-ef9de72483f8
 4. https://towardsdatascience.com/glimpse-into-pytorch3d-an-open-source-3d-deep-learning-library-291a4beba30f
@@ -92,3 +92,5 @@ Now that we have built a triangular mesh. We can use this as a base to create mo
 15. https://www.youtube.com/watch?v=_M21DcHaMrg&list=PLZk0jtN0g8e_4gGYEpm1VYPh8xNka66Jt&index=6
 16. https://learn.udacity.com/courses/cs291
 17. https://madebyevan.com/webgl-path-tracing/
+18. https://numfactory.upc.edu/web/Geometria/signedDistances.html
+19. https://mobile.rodolphe-vaillant.fr/entry/86/implicit-surface-aka-signed-distance-field-definition
