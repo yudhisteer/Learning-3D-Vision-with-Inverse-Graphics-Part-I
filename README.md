@@ -1,4 +1,4 @@
-# Learning for 3D Vision with Inverse Graphics
+# Learning 3D Vision with Inverse Graphics
 
 ## Plan of Action
 
