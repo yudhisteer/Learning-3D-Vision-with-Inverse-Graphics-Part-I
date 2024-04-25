@@ -86,7 +86,7 @@ vertices = vertices.unsqueeze(0)  # [1 x N_v x 3]
 faces = faces.unsqueeze(0)  # [1 x N_f x 3]
 ```
 
-#### 1.1.1 Load Texture
+#### 1.1.2 Load Texture
 Pytorch3d mainly supports 3 types of textures formats **TexturesUV**, **TexturesVertex** and **TexturesAtlas**. TexturesVertex has only one color per vertex. TexturesUV has rather one color per corner of a face. The 3D object file ```.obj``` directs to the material ```.mtl``` file and the material file directs to the texture ``.png``` file. So if we only have a ```.obj``` file we can still render our mesh using a texture of our choice as such:
 
 ```python
@@ -115,7 +115,7 @@ plt.show()
 We then use ```TexturesUV``` which is an auxiliary datastructure for storing vertex uv and texture maps for meshes.
 
 ```python
-textures_uv = pytorch3d.renderer.TexturesUV(
+textures = pytorch3d.renderer.TexturesUV(
                         maps=torch.tensor([texture_map]),
                         faces_uvs=faces_uvs.unsqueeze(0),
                         verts_uvs=verts_uvs.unsqueeze(0)).to(device)
@@ -125,6 +125,14 @@ textures_uv = pytorch3d.renderer.TexturesUV(
 #### 1.1.3 Create Mesh
 
 
+```python
+meshes = pytorch3d.structures.Meshes(
+    verts=vertices.unsqueeze(0), # batched tensor or a list of tensors
+    faces=faces.unsqueeze(0),
+    textures=textures)
+```
+
+#### 1.1.4 Set Camera
 
 
 
