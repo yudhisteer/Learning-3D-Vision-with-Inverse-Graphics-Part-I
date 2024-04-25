@@ -38,6 +38,8 @@ triangle_mesh.gif_renderer(filename=filename, num_views=num_views)
   <img src="https://github.com/yudhisteer/Rendering-Basics-with-PyTorch3D/assets/59663734/8aa00eb7-2e95-4a59-84b8-1502aec647aa" width="20%" />
 </p>
 
+### 1.1 Building mesh by mesh
+
 Now that we have built a triangular mesh. We can use this as a base to create more complex 3D models such as a **cube**. Note that we need to use ```two``` sets of triangle faces to represent ```one``` face of the cube. Our cube will have ```8``` vertices and ```12``` triangular faces. Below is a step-by-step of joining all the 12 faces to form the final cube:
 
 
@@ -54,6 +56,38 @@ Now that we have built a triangular mesh. We can use this as a base to create mo
 ![square_mesh_9](https://github.com/yudhisteer/Rendering-Basics-with-PyTorch3D/assets/59663734/0169c30c-ae4d-48b3-8fbd-352070a6741c)
 ![square_mesh_10](https://github.com/yudhisteer/Rendering-Basics-with-PyTorch3D/assets/59663734/79857298-9029-4251-bce7-6ed8d13504d8)
 ![square_mesh_11](https://github.com/yudhisteer/Rendering-Basics-with-PyTorch3D/assets/59663734/64cc9fac-6f51-40a4-ab2e-092afc10844a)
+
+### 1.1 Custom Mesh with Texture
+Although we showed how our 3D model are made up of triangular meshes, we kind of jump ahead in rendering a mesh. Now let's look at a step by step process of how we can import a ".obj" file, its texture from a ```.mtl``` file and render it.
+
+#### 1.1.1 Load data
+We first start by loading our data using the ```load_obj``` function from ```pytorch3d.io```. This returns the vertices of shape ```[N_v, 3]```, the ```face_props``` tuple which contains the **vertex indices** (**verts_idx**) of shape ```[N_f, 3]``` and **texture indices** (**textures_idx**) of similar shape ```[N_f, 3]```, and the ```aux``` tuple which contains the **uv coordinate per vertex** (**verts_uvs**) of shape ```[N_t, 2]```.
+
+```python
+vertices, face_props, aux = load_obj(data_file)
+```
+
+```python
+print(vertices.shape) #[N_v, 3]
+
+faces = face_props.verts_idx
+faces_uvs = face_props.textures_idx
+print(faces.shape) #[N_f, 3]
+print(faces_uvs.shape) #[N_f, 3]
+
+verts_uvs = text_props.verts_uvs
+print(verts_uvs.shape) #[N_t, 2]
+```
+
+Note that all Pytorch3D elements need to be batched.
+
+```python
+vertices = vertices.unsqueeze(0)  # 1 x N_v x 3
+faces = faces.unsqueeze(0)  # 1 x N_f x 3
+```
+
+![cow_1024](https://github.com/yudhisteer/Learning-for-3D-Vision-with-Inverse-Graphics/assets/59663734/e228231f-4f51-4c53-bae2-c29bd23060db)
+
 
 ### 1.1 Implicit Surfaces
 
