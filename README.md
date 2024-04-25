@@ -82,8 +82,8 @@ print(verts_uvs.shape) #[N_t, 2]
 Note that all Pytorch3D elements need to be batched.
 
 ```python
-vertices = vertices.unsqueeze(0)  # 1 x N_v x 3
-faces = faces.unsqueeze(0)  # 1 x N_f x 3
+vertices = vertices.unsqueeze(0)  # [1 x N_v x 3]
+faces = faces.unsqueeze(0)  # [1 x N_f x 3]
 ```
 
 ![cow_1024](https://github.com/yudhisteer/Learning-for-3D-Vision-with-Inverse-Graphics/assets/59663734/e228231f-4f51-4c53-bae2-c29bd23060db)
