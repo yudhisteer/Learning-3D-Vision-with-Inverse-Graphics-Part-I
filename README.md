@@ -134,8 +134,20 @@ meshes = pytorch3d.structures.Meshes(
 
 #### 1.1.4 Set Camera
 
+![145090051-67b506d7-6d73-4826-a677-5873b7cb92ba](https://github.com/yudhisteer/Learning-for-3D-Vision-with-Inverse-Graphics/assets/59663734/38bc9210-6967-43cd-9854-c7b160a384d1)
 
+```python
+R = torch.eye(3).unsqueeze(0) # [1, 3, 3]
+print(R.shape)
+T = torch.tensor([[0, 0, 30]]) # [1, 3]
+print(T.shape)
 
+cameras = pytorch3d.renderer.FoVPerspectiveCameras(
+    R=R,
+    T=T,
+    fov=60,
+    device=device)
+```
 
 ### 1.1 Implicit Surfaces
 
