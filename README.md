@@ -57,7 +57,7 @@ Now that we have built a triangular mesh. We can use this as a base to create mo
 ![square_mesh_10](https://github.com/yudhisteer/Rendering-Basics-with-PyTorch3D/assets/59663734/79857298-9029-4251-bce7-6ed8d13504d8)
 ![square_mesh_11](https://github.com/yudhisteer/Rendering-Basics-with-PyTorch3D/assets/59663734/64cc9fac-6f51-40a4-ab2e-092afc10844a)
 
-### 1.1 Custom Mesh with Texture
+### 1.1 Render Mesh with Texture
 Although we showed how our 3D model are made up of triangular meshes, we kind of jump ahead in rendering a mesh. Now let's look at a step by step process of how we can import a ".obj" file, its texture from a ```.mtl``` file and render it.
 
 #### 1.1.1 Load data
@@ -86,7 +86,47 @@ vertices = vertices.unsqueeze(0)  # [1 x N_v x 3]
 faces = faces.unsqueeze(0)  # [1 x N_f x 3]
 ```
 
-![cow_1024](https://github.com/yudhisteer/Learning-for-3D-Vision-with-Inverse-Graphics/assets/59663734/e228231f-4f51-4c53-bae2-c29bd23060db)
+#### 1.1.1 Load Texture
+Pytorch3d mainly supports 3 types of textures formats **TexturesUV**, **TexturesVertex** and **TexturesAtlas**. TexturesVertex has only one color per vertex. TexturesUV has rather one color per corner of a face. The 3D object file ```.obj``` directs to the material ```.mtl``` file and the material file directs to the texture ``.png``` file. So if we only have a ```.obj``` file we can still render our mesh using a texture of our choice as such:
+
+```python
+texture_rgb = torch.ones_like(vertices.unsqueeze(0)) # 1 x N X 3
+texture_rgb = texture_rgb * torch.tensor([0.7, 0.7, 1])
+```
+
+We use ```TexturesVertex``` to define a texture for the rendering:
+
+```python
+textures = pytorch3d.renderer.TexturesVertex(texture_rgb)
+```
+
+However if we do have a texture map, we can load it as a normal image and visualize it:
+
+```python
+texture_map = plt.imread("cow_texture.png") #(1024, 1024, 3)
+plt.imshow(texture_map)
+plt.show()
+```
+
+<img width="351" alt="image" src="https://github.com/yudhisteer/Learning-for-3D-Vision-with-Inverse-Graphics/assets/59663734/d177293c-feab-46af-9eb1-ee5c5f63f4d7">
+
+
+
+We then use ```TexturesUV``` which is an auxiliary datastructure for storing vertex uv and texture maps for meshes.
+
+```python
+textures_uv = pytorch3d.renderer.TexturesUV(
+                        maps=torch.tensor([texture_map]),
+                        faces_uvs=faces_uvs.unsqueeze(0),
+                        verts_uvs=verts_uvs.unsqueeze(0)).to(device)
+```
+
+
+#### 1.1.3 Create Mesh
+
+
+
+
 
 
 ### 1.1 Implicit Surfaces
@@ -106,6 +146,8 @@ faces = faces.unsqueeze(0)  # [1 x N_f x 3]
 <a name="dr"></a>
 ## 3. Differential Rendering
 
+
+![cow_1024](https://github.com/yudhisteer/Learning-for-3D-Vision-with-Inverse-Graphics/assets/59663734/e228231f-4f51-4c53-bae2-c29bd23060db)
 
 
 
