@@ -229,12 +229,23 @@ plt.show()
   <img src="https://github.com/yudhisteer/Learning-for-3D-Vision-with-Inverse-Graphics/assets/59663734/e228231f-4f51-4c53-bae2-c29bd23060db" width="40%" />
 </p>
 
+#### 1.1.8 Re-texturing a mesh
 
 
-### 1.1 Implicit Surfaces
+
+### 1.2 Rendering Generic 3D Representations
+
+#### 1.2.1 Rendering Point Clouds from RGB-D Images
 
 
-### 1.2 Explicit Surfaces
+
+#### 1.2.2 Parametric Functions
+
+
+
+
+#### 1.2.3 Implicit Surfaces
+
 
 
 -------------------------
