@@ -120,7 +120,7 @@ textures = pytorch3d.renderer.TexturesUV(
 
 
 #### 1.1.3 Create Mesh
-
+Next, we create an instance of a mesh using ```pytorch3d.structures.Meshes```. Our arguments are the vertices and faces batched, and the textures.
 
 ```python
 meshes = pytorch3d.structures.Meshes(
@@ -130,7 +130,7 @@ meshes = pytorch3d.structures.Meshes(
 ```
 
 #### 1.1.4 Set Camera
-Below are the 4 coordinate systems for 3D data:
+We want to be able to generate images of our 3D model so we set up a camera. Below are the 4 coordinate systems for 3D data:
 
 1. **World Coordinate System**: The environment where the object or scene exists.
 2. **Camera View Coordinate System**: Originates at the image plane with the Z-axis perpendicular to this plane, and orientations are such that +X points left, +Y points up, and +Z points outward. A rotation (R) and translation (T) transform this from the world system.
@@ -138,6 +138,8 @@ Below are the 4 coordinate systems for 3D data:
 4. **Screen Coordinate System**: Maps the view volume to pixel space, where (0,0) and (W,H) represent the top left and bottom right corners of the viewable screen, respectively.
 
 ![145090051-67b506d7-6d73-4826-a677-5873b7cb92ba](https://github.com/yudhisteer/Learning-for-3D-Vision-with-Inverse-Graphics/assets/59663734/38bc9210-6967-43cd-9854-c7b160a384d1)
+
+We use the ```pytorch3d.renderer.FoVPerspectiveCameras``` function to generate a camera. Our 3D object lives in the world coordinates and we want to visualzie it in the image coordinates. We first need a **rotation** and **translation** matrix to build the **extrinsic matrix** of the camera, the **intrinsic matrix** will be supplied by PyTorch3D. 
 
 ```python
 R = torch.eye(3).unsqueeze(0) # [1, 3, 3]
@@ -150,6 +152,8 @@ cameras = pytorch3d.renderer.FoVPerspectiveCameras(
     device=device)
 ```
 
+Below we have the extrinsic matrix which consists of the translation and rotation matrix in **homogeneous** coordinates. 
+
 ```python
 transform = cameras.get_world_to_view_transform()
 print(transform.get_matrix()) # [1, 4, 4]
@@ -161,6 +165,8 @@ tensor([[[ 1.,  0.,  0.,  0.],
          [ 0.,  0.,  1.,  0.],
          [ 0.,  0., 30.,  1.]]], device='cuda:0')
 ```
+In the project [Pseudo-LiDARs with Stereo Vision](https://github.com/yudhisteer/Pseudo-LiDARs-with-Stereo-Vision), I explain more about the camera coordinate system:
+
 <img width="442" alt="248844731-6b1b9d46-2714-48c8-8c32-ada400a17f73" src="https://github.com/yudhisteer/Learning-for-3D-Vision-with-Inverse-Graphics/assets/59663734/63ce3160-35c1-4bda-94e7-1d1a8e58fa2c">
 
 
