@@ -187,6 +187,7 @@ In the project [Pseudo-LiDARs with Stereo Vision](https://github.com/yudhisteer/
 Now when rendering an image, we may experience that our rendered image is white because the camera is not face our mesh. We have 2 solutions for this: **move the mesh** or **move the camera**.
 
 We rotate our mesh 90 degrees clockwise. Notice how the camera is always facing towards the x-axis.
+
 ```python
 relative_rotation = pytorch3d.transforms.euler_angles_to_matrix(torch.tensor([0, np.pi/2, 0]), "XYZ") # [3, 3]
 vertices_rotate = vertices @ relative_rotation # [N_v, 3]
@@ -207,7 +208,12 @@ vertices_rotate = vertices @ relative_rotation # [N_v, 3]
   </tr>
 </table>
 
-Or we rotate the camera. Notice how the camera is now facing towards teh z-axis:
+Or we rotate the camera. Notice how the camera is now facing towards the z-axis:
+
+```python
+relative_rotation = pytorch3d.transforms.euler_angles_to_matrix(torch.tensor([0, np.pi/2, 0]), "XYZ") # [3, 3]
+R_rotate = relative_rotation.unsqueeze(0) # [1, 3, 3]
+```
 
 <table>
   <tr>
