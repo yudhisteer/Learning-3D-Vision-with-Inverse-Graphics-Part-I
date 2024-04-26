@@ -281,6 +281,10 @@ plt.show()
 
 #### 1.2.1 Rendering Point Clouds from RGB-D Images
 
+<p align="center">
+  <img src="https://github.com/yudhisteer/Learning-for-3D-Vision-with-Inverse-Graphics/assets/59663734/27add765-3897-4b15-b847-146e0798a6bf" width="60%" />
+</p>
+
 
 
 #### 1.2.2 Parametric Functions
