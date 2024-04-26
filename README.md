@@ -70,13 +70,10 @@ vertices, face_props, aux = load_obj(data_file)
 ```python
 print(vertices.shape) #[N_v, 3]
 
-faces = face_props.verts_idx
-faces_uvs = face_props.textures_idx
-print(faces.shape) #[N_f, 3]
-print(faces_uvs.shape) #[N_f, 3]
+faces = face_props.verts_idx #[N_f, 3]
+faces_uvs = face_props.textures_idx #[N_f, 3]
 
-verts_uvs = text_props.verts_uvs
-print(verts_uvs.shape) #[N_t, 2]
+verts_uvs = text_props.verts_uvs #[N_t, 2]
 ```
 
 Note that all Pytorch3D elements need to be batched.
@@ -90,7 +87,7 @@ faces = faces.unsqueeze(0)  # [1 x N_f x 3]
 Pytorch3d mainly supports 3 types of textures formats **TexturesUV**, **TexturesVertex** and **TexturesAtlas**. TexturesVertex has only one color per vertex. TexturesUV has rather one color per corner of a face. The 3D object file ```.obj``` directs to the material ```.mtl``` file and the material file directs to the texture ``.png``` file. So if we only have a ```.obj``` file we can still render our mesh using a texture of our choice as such:
 
 ```python
-texture_rgb = torch.ones_like(vertices.unsqueeze(0)) # [1 x N X 3]
+texture_rgb = torch.ones_like(vertices.unsqueeze(0)) # [1 x N_v X 3]
 texture_rgb = texture_rgb * torch.tensor([0.7, 0.7, 1])
 ```
 
