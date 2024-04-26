@@ -90,7 +90,7 @@ faces = faces.unsqueeze(0)  # [1 x N_f x 3]
 Pytorch3d mainly supports 3 types of textures formats **TexturesUV**, **TexturesVertex** and **TexturesAtlas**. TexturesVertex has only one color per vertex. TexturesUV has rather one color per corner of a face. The 3D object file ```.obj``` directs to the material ```.mtl``` file and the material file directs to the texture ``.png``` file. So if we only have a ```.obj``` file we can still render our mesh using a texture of our choice as such:
 
 ```python
-texture_rgb = torch.ones_like(vertices.unsqueeze(0)) # 1 x N X 3
+texture_rgb = torch.ones_like(vertices.unsqueeze(0)) # [1 x N X 3]
 texture_rgb = texture_rgb * torch.tensor([0.7, 0.7, 1])
 ```
 
@@ -144,9 +144,7 @@ Below are the 4 coordinate systems for 3D data:
 
 ```python
 R = torch.eye(3).unsqueeze(0) # [1, 3, 3]
-print(R.shape)
 T = torch.tensor([[0, 0, 30]]) # [1, 3]
-print(T.shape)
 
 cameras = pytorch3d.renderer.FoVPerspectiveCameras(
     R=R,
