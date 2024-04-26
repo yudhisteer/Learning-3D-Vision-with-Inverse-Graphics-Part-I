@@ -105,8 +105,9 @@ plt.imshow(texture_map)
 plt.show()
 ```
 
-<img width="351" alt="image" src="https://github.com/yudhisteer/Learning-for-3D-Vision-with-Inverse-Graphics/assets/59663734/d177293c-feab-46af-9eb1-ee5c5f63f4d7">
-
+<p align="center">
+  <img src="https://github.com/yudhisteer/Learning-for-3D-Vision-with-Inverse-Graphics/assets/59663734/d177293c-feab-46af-9eb1-ee5c5f63f4d7" width="40%" />
+</p>
 
 
 We then use ```TexturesUV``` which is an auxiliary datastructure for storing vertex uv and texture maps for meshes.
@@ -129,7 +130,7 @@ meshes = pytorch3d.structures.Meshes(
     textures=textures)
 ```
 
-#### 1.1.4 Set Camera
+#### 1.1.4 Position a Camera
 We want to be able to generate images of our 3D model so we set up a camera. Below are the 4 coordinate systems for 3D data:
 
 1. **World Coordinate System**: The environment where the object or scene exists.
@@ -137,13 +138,20 @@ We want to be able to generate images of our 3D model so we set up a camera. Bel
 3. **NDC (Normalized Device Coordinate) System**: Normalizes the coordinates within a view volume, with specific mappings for the corners based on aspect ratios and the near and far planes. This transformation uses the camera projection matrix (P).
 4. **Screen Coordinate System**: Maps the view volume to pixel space, where (0,0) and (W,H) represent the top left and bottom right corners of the viewable screen, respectively.
 
-![145090051-67b506d7-6d73-4826-a677-5873b7cb92ba](https://github.com/yudhisteer/Learning-for-3D-Vision-with-Inverse-Graphics/assets/59663734/38bc9210-6967-43cd-9854-c7b160a384d1)
+
+<p align="center">
+  <img src="https://github.com/yudhisteer/Learning-for-3D-Vision-with-Inverse-Graphics/assets/59663734/38bc9210-6967-43cd-9854-c7b160a384d1" width="90%" />
+</p>
+<div align="center">
+    <p>Image source: <a href="https://arxiv.org/abs/1612.00593">PointNet: Deep Learning on Point Sets for 3D Classification and Segmentation</a></p>
+</div>
+
 
 We use the ```pytorch3d.renderer.FoVPerspectiveCameras``` function to generate a camera. Our 3D object lives in the world coordinates and we want to visualzie it in the image coordinates. We first need a **rotation** and **translation** matrix to build the **extrinsic matrix** of the camera, the **intrinsic matrix** will be supplied by PyTorch3D. 
 
 ```python
 R = torch.eye(3).unsqueeze(0) # [1, 3, 3]
-T = torch.tensor([[0, 0, 30]]) # [1, 3]
+T = torch.tensor([[0, 0, 3]]) # [1, 3]
 
 cameras = pytorch3d.renderer.FoVPerspectiveCameras(
     R=R,
@@ -151,6 +159,11 @@ cameras = pytorch3d.renderer.FoVPerspectiveCameras(
     fov=60,
     device=device)
 ```
+
+<p align="center">
+  <img src="https://github.com/yudhisteer/Learning-for-3D-Vision-with-Inverse-Graphics/assets/59663734/246c18fe-64f7-4623-80ef-fe0e60e1552b" width="40%" />
+</p>
+
 
 Below we have the extrinsic matrix which consists of the translation and rotation matrix in **homogeneous** coordinates. 
 
@@ -163,11 +176,59 @@ print(transform.get_matrix()) # [1, 4, 4]
 tensor([[[ 1.,  0.,  0.,  0.],
          [ 0.,  1.,  0.,  0.],
          [ 0.,  0.,  1.,  0.],
-         [ 0.,  0., 30.,  1.]]], device='cuda:0')
+         [ 0.,  0., 3.,  1.]]], device='cuda:0')
 ```
 In the project [Pseudo-LiDARs with Stereo Vision](https://github.com/yudhisteer/Pseudo-LiDARs-with-Stereo-Vision), I explain more about the camera coordinate system:
 
-<img width="442" alt="248844731-6b1b9d46-2714-48c8-8c32-ada400a17f73" src="https://github.com/yudhisteer/Learning-for-3D-Vision-with-Inverse-Graphics/assets/59663734/63ce3160-35c1-4bda-94e7-1d1a8e58fa2c">
+<p align="center">
+  <img src="https://github.com/yudhisteer/Learning-for-3D-Vision-with-Inverse-Graphics/assets/59663734/63ce3160-35c1-4bda-94e7-1d1a8e58fa2c" width="50%" />
+</p>
+
+#### 1.1.5 Create a renderer
+To create a render we need a **rasterizer** which is given a pixel, which triangles correspond to it and a **shader**, that is, given triangle, texture, lighting, etc, how should the pixel be colored. 
+
+```python
+image_size = 512
+
+# Rasterizer
+raster_settings = pytorch3d.renderer.RasterizationSettings(image_size=image_size)
+rasterizer = pytorch3d.renderer.MeshRasterizer(
+    raster_settings=raster_settings)
+
+# Shader
+shader = pytorch3d.renderer.HardPhongShader(device=device)
+```
+
+```python
+# Renderer
+renderer = pytorch3d.renderer.MeshRenderer(
+    rasterizer=rasterizer,
+    shader=shader)
+```
+
+
+#### 1.1.6 Set up light
+Our image will be pretty dark if we do not set up a light source in our world.
+
+```python
+lights = pytorch3d.renderer.PointLights(location=[[0, 0, -3]], device=device)
+```
+
+#### 1.1.7 Render Mesh
+
+
+```python
+image = renderer(meshes, cameras=cameras, lights=lights)
+plt.imshow(image[0].cpu().numpy())
+plt.show()
+```
+
+
+<p align="center">
+  <img src="https://github.com/yudhisteer/Learning-for-3D-Vision-with-Inverse-Graphics/assets/59663734/f554efe4-3a91-4faa-8f66-7ecdfbb7d405" width="40%" />
+  <img src="https://github.com/yudhisteer/Learning-for-3D-Vision-with-Inverse-Graphics/assets/59663734/e228231f-4f51-4c53-bae2-c29bd23060db" width="40%" />
+</p>
+
 
 
 ### 1.1 Implicit Surfaces
@@ -186,9 +247,6 @@ In the project [Pseudo-LiDARs with Stereo Vision](https://github.com/yudhisteer/
 -------------------------
 <a name="dr"></a>
 ## 3. Differential Rendering
-
-
-![cow_1024](https://github.com/yudhisteer/Learning-for-3D-Vision-with-Inverse-Graphics/assets/59663734/e228231f-4f51-4c53-bae2-c29bd23060db)
 
 
 
