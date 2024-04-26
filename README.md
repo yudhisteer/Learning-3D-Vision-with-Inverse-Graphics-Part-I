@@ -184,6 +184,47 @@ In the project [Pseudo-LiDARs with Stereo Vision](https://github.com/yudhisteer/
   <img src="https://github.com/yudhisteer/Learning-for-3D-Vision-with-Inverse-Graphics/assets/59663734/63ce3160-35c1-4bda-94e7-1d1a8e58fa2c" width="50%" />
 </p>
 
+Now when rendering an image, we may experience that our rendered image is white because the camera is not face our mesh. We have 2 solutions for this: **move the mesh** or **move the camera**.
+
+We rotate our mesh 90 degrees clockwise. Notice how the camera is always facing towards the x-axis.
+```python
+relative_rotation = pytorch3d.transforms.euler_angles_to_matrix(torch.tensor([0, np.pi/2, 0]), "XYZ") # [3, 3]
+vertices_rotate = vertices @ relative_rotation # [N_v, 3]
+```
+
+<table>
+  <tr>
+    <th><b>Before rotation</b></th>
+    <th><b>After rotation</b></th>
+  </tr>
+  <tr>
+    <td>
+      <img src="https://github.com/yudhisteer/Learning-for-3D-Vision-with-Inverse-Graphics/assets/59663734/71b564b1-b3da-42bb-9c93-29c7f940fa91" alt="Image 1">
+    </td>
+    <td>
+      <img src="https://github.com/yudhisteer/Learning-for-3D-Vision-with-Inverse-Graphics/assets/59663734/08e755f3-6cf9-4fff-a613-fc6ae9ab3439" alt="Image 2">
+    </td>
+  </tr>
+</table>
+
+Or we rotate the camera. Notice how the camera is now facing towards teh z-axis:
+
+<table>
+  <tr>
+    <th><b>Before rotation</b></th>
+    <th><b>After rotation</b></th>
+  </tr>
+  <tr>
+    <td>
+      <img src="https://github.com/yudhisteer/Learning-for-3D-Vision-with-Inverse-Graphics/assets/59663734/71b564b1-b3da-42bb-9c93-29c7f940fa91" alt="Image 1">
+    </td>
+    <td>
+      <img src="https://github.com/yudhisteer/Learning-for-3D-Vision-with-Inverse-Graphics/assets/59663734/9075d493-87a4-420b-bbf2-42a1b26d09be" alt="Image 2">
+    </td>
+  </tr>
+</table>
+
+
 #### 1.1.5 Create a renderer
 To create a render we need a **rasterizer** which is given a pixel, which triangles correspond to it and a **shader**, that is, given triangle, texture, lighting, etc, how should the pixel be colored. 
 
@@ -228,9 +269,6 @@ plt.show()
   <img src="https://github.com/yudhisteer/Learning-for-3D-Vision-with-Inverse-Graphics/assets/59663734/f554efe4-3a91-4faa-8f66-7ecdfbb7d405" width="40%" />
   <img src="https://github.com/yudhisteer/Learning-for-3D-Vision-with-Inverse-Graphics/assets/59663734/e228231f-4f51-4c53-bae2-c29bd23060db" width="40%" />
 </p>
-
-#### 1.1.8 Re-texturing a mesh
-
 
 
 ### 1.2 Rendering Generic 3D Representations
