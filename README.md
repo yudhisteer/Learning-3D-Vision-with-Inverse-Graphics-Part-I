@@ -315,9 +315,9 @@ Below is the parametric equation. Note that by sampling values of theta and phi,
 </p>
 
 <p align="center">
-  <img src="https://github.com/yudhisteer/Learning-3D-Vision-with-Inverse-Graphics/assets/59663734/6a66b82b-e239-48ae-8bf1-1629f4fc40a7" width="33%" />
-  <img src="https://github.com/yudhisteer/Learning-3D-Vision-with-Inverse-Graphics/assets/59663734/2c1d61fc-24be-463b-b14e-dab07c824b81" width="33%" />
-  <img src="https://github.com/yudhisteer/Learning-3D-Vision-with-Inverse-Graphics/assets/59663734/9dd55c63-539e-40de-a5a5-8f9b8cf74c36" width="33%" />
+  <img src="https://github.com/yudhisteer/Learning-3D-Vision-with-Inverse-Graphics/assets/59663734/6a66b82b-e239-48ae-8bf1-1629f4fc40a7" width="30%" />
+  <img src="https://github.com/yudhisteer/Learning-3D-Vision-with-Inverse-Graphics/assets/59663734/2c1d61fc-24be-463b-b14e-dab07c824b81" width="30%" />
+  <img src="https://github.com/yudhisteer/Learning-3D-Vision-with-Inverse-Graphics/assets/59663734/9dd55c63-539e-40de-a5a5-8f9b8cf74c36" width="30%" />
 </p>
 
 
