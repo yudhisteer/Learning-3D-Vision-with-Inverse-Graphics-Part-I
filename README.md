@@ -286,6 +286,10 @@ Our dataset contains 3 images of the same plan. We have the RGB image, a depth m
   <img src="https://github.com/yudhisteer/Learning-for-3D-Vision-with-Inverse-Graphics/assets/59663734/27add765-3897-4b15-b847-146e0798a6bf" width="60%" />
 </p>
 
+<p align="center">
+  <img src="https://github.com/yudhisteer/Learning-for-3D-Vision-with-Inverse-Graphics/assets/59663734/a9b0ab66-b165-404f-87b0-c4747b76df6d" width="49%" />
+  <img src="https://github.com/yudhisteer/Learning-for-3D-Vision-with-Inverse-Graphics/assets/59663734/447cfc5b-c8c6-4de1-a313-bc9ddfaa1e5e" width="49%" />
+</p>
 
 
 #### 1.2.2 Parametric Functions
