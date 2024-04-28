@@ -293,6 +293,27 @@ Our dataset contains 3 images of the same plan. We have the RGB image, a depth m
 
 
 #### 1.2.2 Parametric Functions
+Next, we can define a 3D object as a parameteric function and sample points along its surface and render these points. If we were to define the equation of a sphere implicitly with center ```(x_0, y_0, z_0)``` and radius ```R```. 
+
+<p align="center">
+  <img src="https://github.com/yudhisteer/Learning-3D-Vision-with-Inverse-Graphics/assets/59663734/b616a09b-9428-4323-82c8-d963b73244cd"/>
+</p>
+
+Now if we were to define the parameteric function of the sphere using the elevation angle (theta) and the azimuth angle (phi):
+
+<p align="center">
+  <img src="https://github.com/yudhisteer/Learning-3D-Vision-with-Inverse-Graphics/assets/59663734/6c4c6db8-a5fa-4e8b-ac98-0af7547563da" width="60%" />
+</p>
+<div align="center">
+    <p>Image source: <a href="http://www.ece.northwestern.edu/local-apps/matlabhelp/techdoc/visualize/chview3.html">Azimuth and elevation angles</a></p>
+</div>
+
+Below is the parametric equation. Note that by sampling values of theta and phi, we can generate a sphere point cloud. 
+
+<p align="center">
+  <img src="https://github.com/yudhisteer/Learning-3D-Vision-with-Inverse-Graphics/assets/59663734/e9decac9-5f5b-4def-afd6-42c57686502e"/>
+</p>
+
 
 
 
