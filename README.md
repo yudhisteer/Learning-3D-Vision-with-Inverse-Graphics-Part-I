@@ -280,6 +280,7 @@ plt.show()
 ### 1.2 Rendering Generic 3D Representations
 
 #### 1.2.1 Rendering Point Clouds from RGB-D Images
+Our dataset contains 3 images of the same plan. We have the RGB image, a depth map, a mask, and a Pytorch3D camera corresponding to the pose that the image was taken from. Frst, we want to convert the depth map int oa point cloud. For  that, we make use of the ```unproject_depth_image``` function which uses the camera intrinsics and extrinisics to cast a ray from every pixel in the image into world coordinates space. The ray's final distance is the depth value at that pixel, and the color of each point can be determined from the corresponding image pixel.
 
 <p align="center">
   <img src="https://github.com/yudhisteer/Learning-for-3D-Vision-with-Inverse-Graphics/assets/59663734/27add765-3897-4b15-b847-146e0798a6bf" width="60%" />
