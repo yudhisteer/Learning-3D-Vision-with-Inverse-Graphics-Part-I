@@ -301,6 +301,10 @@ Our dataset contains 3 images of the same plan. We have the RGB image, a depth m
 
 
 
+#### 1.2.4 Implicit Surfaces Sampling Points on Meshes 
+
+
+
 -------------------------
 <a name="ps"></a>
 ## 2. Photorealism Spectrum
