@@ -301,7 +301,7 @@ Our dataset contains 3 images of the same plan. We have the RGB image, a depth m
 
 
 
-#### 1.2.4 Implicit Surfaces Sampling Points on Meshes 
+#### 1.2.4 Sampling Points on Meshes 
 
 
 
