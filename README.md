@@ -339,6 +339,19 @@ So how is these torus different from the point cloud ones? With implicit surface
 
 #### 1.2.4 Sampling Points on Meshes 
 
+One way to convert meshes into point clouds would be simply to use the **vertices**.But this can be problematic if the triangular mesh - **faces**- are of different sizes. A better method is **uniform sampling** of the surface through **stratified sampling**. Below is the process:
+
+1. Choose a triangle to sample from based on its size; larger triangles (larger area) have a higher chance of being chosen.
+2. Inside the chosen triangle, pick a random spot. This is done using something called **barycentric coordinates**, which help in defining a point in relation to the triangle’s corners.
+3. Calculate the exact position of this random spot on the triangle to get a uniform spread of points across the entire mesh.
+
+Below is an example whereby we take a triangle mesh and the number of samples and outputs a point cloud. We randomly sample ```100```, ```1000```, and ```100000``` points respectively.
+
+<p align="center">
+  <img src="https://github.com/yudhisteer/Learning-3D-Vision-with-Inverse-Graphics/assets/59663734/0ce2baa6-e279-4729-88cb-6652c793467d" width="30%" />
+  <img src="https://github.com/yudhisteer/Learning-3D-Vision-with-Inverse-Graphics/assets/59663734/bcf98e06-8a0f-4699-b19e-cae5d8ef4e5c" width="30%" />
+  <img src="https://github.com/yudhisteer/Learning-3D-Vision-with-Inverse-Graphics/assets/59663734/fcf169f1-fa94-4304-a687-1d59feafabf8" width="30%" />
+</p>
 
 
 -------------------------
