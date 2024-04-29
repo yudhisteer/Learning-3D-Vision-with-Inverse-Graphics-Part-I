@@ -293,26 +293,19 @@ Our dataset contains 3 images of the same plan. We have the RGB image, a depth m
 
 
 #### 1.2.2 Parametric Functions
-Next, we can define a 3D object as a parameteric function and sample points along its surface and render these points. If we were to define the equation of a sphere implicitly with center ```(x_0, y_0, z_0)``` and radius ```R```. 
+We can define a 3D object as a **parameteric function** and sample points along its surface and render these points. If we were to define the equation of a sphere with center ```(x_0, y_0, z_0)``` and radius ```R```. 
 
 <p align="center">
   <img src="https://github.com/yudhisteer/Learning-3D-Vision-with-Inverse-Graphics/assets/59663734/b616a09b-9428-4323-82c8-d963b73244cd"/>
 </p>
 
-Now if we were to define the parameteric function of the sphere using the elevation angle (theta) and the azimuth angle (phi):
-
-<p align="center">
-  <img src="https://github.com/yudhisteer/Learning-3D-Vision-with-Inverse-Graphics/assets/59663734/6c4c6db8-a5fa-4e8b-ac98-0af7547563da" width="60%" />
-</p>
-<div align="center">
-    <p>Image source: <a href="http://www.ece.northwestern.edu/local-apps/matlabhelp/techdoc/visualize/chview3.html">Azimuth and elevation angles</a></p>
-</div>
-
-Below is the parametric equation. Note that by sampling values of theta and phi, we can generate a sphere point cloud. 
+Now if we were to define the **parameteric function** of the sphere using the elevation angle (theta) and the azimuth angle (phi). Note that by sampling values of theta and phi, we can generate a sphere point cloud. 
 
 <p align="center">
   <img src="https://github.com/yudhisteer/Learning-3D-Vision-with-Inverse-Graphics/assets/59663734/e9decac9-5f5b-4def-afd6-42c57686502e"/>
 </p>
+
+Below are the rendered point clouds where we sampled ```50```, ```300``` and ```1000``` points on the surface respectively.
 
 <p align="center">
   <img src="https://github.com/yudhisteer/Learning-3D-Vision-with-Inverse-Graphics/assets/59663734/6a66b82b-e239-48ae-8bf1-1629f4fc40a7" width="30%" />
@@ -328,11 +321,21 @@ An implicit function is a way to define a shape **without** explicitly listing i
 
 To visualize a shape defined by an implicit function, we start by **discretizing** 3D space into a ```grid of voxels``` (**volumetric pixels**). We then evaluate the function ```F``` at each voxel's coordinates to determine whether each voxel should be part of the shape (i.e., does it satisfy the equation ```F = 0```?). The result of this process is stored in a voxel grid, a 3D array where each value indicates whether the corresponding voxel is inside or outside the shape.
 
+The implicit function for a torus:
+
+<p align="center">
+  <img src="https://github.com/yudhisteer/Learning-3D-Vision-with-Inverse-Graphics/assets/59663734/4092a638-5327-4f1d-8f0f-685ec2c6e7a6"/>
+</p>
+
+Below we have the torus with voxel size ```20```, ```30```, and ```80``` respectively.
+
 <p align="center">
   <img src="https://github.com/yudhisteer/Learning-3D-Vision-with-Inverse-Graphics/assets/59663734/741c5bd9-2c44-4fcd-b346-5a4f85fa8ef6" width="30%" />
   <img src="https://github.com/yudhisteer/Learning-3D-Vision-with-Inverse-Graphics/assets/59663734/4e0465af-af8f-425c-815c-3f19069344cc" width="30%" />
   <img src="https://github.com/yudhisteer/Learning-3D-Vision-with-Inverse-Graphics/assets/59663734/4002533d-b898-45c1-88fa-2755e96e3ef6" width="30%" />
 </p>
+
+So how is these torus different from the point cloud ones? With implicit surfaces, we have **connectivity** between the vertices as compared to point clouds which has no connectivity.
 
 #### 1.2.4 Sampling Points on Meshes 
 
