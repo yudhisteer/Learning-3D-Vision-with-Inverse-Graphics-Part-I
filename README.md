@@ -345,7 +345,7 @@ One way to convert meshes into point clouds would be simply to use the **vertice
 2. Inside the chosen triangle, pick a random spot. This is done using something called **barycentric coordinates**, which help in defining a point in relation to the triangle’s corners.
 3. Calculate the exact position of this random spot on the triangle to get a uniform spread of points across the entire mesh.
 
-Below is an example whereby we take a triangle mesh and the number of samples and outputs a point cloud. We randomly sample ```100```, ```1000```, and ```100000``` points respectively.
+Below is an example whereby we take a triangle mesh and the number of samples and outputs a point cloud. We randomly sample ```1000```, ```10000```, and ```100000``` points respectively.
 
 <p align="center">
   <img src="https://github.com/yudhisteer/Learning-3D-Vision-with-Inverse-Graphics/assets/59663734/0ce2baa6-e279-4729-88cb-6652c793467d" width="30%" />
