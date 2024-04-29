@@ -324,8 +324,15 @@ Below is the parametric equation. Note that by sampling values of theta and phi,
 
 
 #### 1.2.3 Implicit Surfaces
+An implicit function is a way to define a shape **without** explicitly listing its **coordinates**. The function ```F(x, y, z)``` describes the surface by its "**zero level-set**," which means all points ```(x, y, z)``` that satisfy ```F(x, y, z) = 0``` belong to the surface. 
 
+To visualize a shape defined by an implicit function, we start by **discretizing** 3D space into a ```grid of voxels``` (**volumetric pixels**). We then evaluate the function ```F``` at each voxel's coordinates to determine whether each voxel should be part of the shape (i.e., does it satisfy the equation ```F = 0```?). The result of this process is stored in a voxel grid, a 3D array where each value indicates whether the corresponding voxel is inside or outside the shape.
 
+<p align="center">
+  <img src="https://github.com/yudhisteer/Learning-3D-Vision-with-Inverse-Graphics/assets/59663734/741c5bd9-2c44-4fcd-b346-5a4f85fa8ef6" width="30%" />
+  <img src="https://github.com/yudhisteer/Learning-3D-Vision-with-Inverse-Graphics/assets/59663734/4e0465af-af8f-425c-815c-3f19069344cc" width="30%" />
+  <img src="https://github.com/yudhisteer/Learning-3D-Vision-with-Inverse-Graphics/assets/59663734/4002533d-b898-45c1-88fa-2755e96e3ef6" width="30%" />
+</p>
 
 #### 1.2.4 Sampling Points on Meshes 
 
