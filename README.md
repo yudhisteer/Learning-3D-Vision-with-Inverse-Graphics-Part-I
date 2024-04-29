@@ -321,6 +321,8 @@ An implicit function is a way to define a shape **without** explicitly listing i
 
 To visualize a shape defined by an implicit function, we start by **discretizing** 3D space into a ```grid of voxels``` (**volumetric pixels**). We then evaluate the function ```F``` at each voxel's coordinates to determine whether each voxel should be part of the shape (i.e., does it satisfy the equation ```F = 0```?). The result of this process is stored in a voxel grid, a 3D array where each value indicates whether the corresponding voxel is inside or outside the shape.
 
+To reconstruct the mesh, we use the **marching cubes algorithm**, which helps us **extract surfaces** at a specific threshold level (0-level set). In practice, we can create our voxel grid using ```torch.meshgrid```, which helps in setting up coordinates for each voxel in our space. We use these coordinates to evaluate our mathematical function. After setting up the voxel grid, we apply the ```mcubes``` library to transform this grid into a **triangle mesh**.
+
 The implicit function for a torus:
 
 <p align="center">
