@@ -361,7 +361,15 @@ Below is an example whereby we take a triangle mesh and the number of samples an
 <a name="sv3d"></a>
 ## 2. Single View to 3D
 
+### 2.1 Learning to Predict Volumetric 3D
 
+
+
+### 2.2 Learning to Predict Point Clouds
+
+
+
+### 2.3 Learning to Predict Meshes
 
 
 
@@ -406,3 +414,4 @@ Below is an example whereby we take a triangle mesh and the number of samples an
 17. https://madebyevan.com/webgl-path-tracing/
 18. https://numfactory.upc.edu/web/Geometria/signedDistances.html
 19. https://mobile.rodolphe-vaillant.fr/entry/86/implicit-surface-aka-signed-distance-field-definition
+20. https://www.youtube.com/watch?v=KnUFccsAsfs&t=2512s
