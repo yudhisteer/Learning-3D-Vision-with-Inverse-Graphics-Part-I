@@ -392,6 +392,7 @@ Below is an example whereby we take a triangle mesh and the number of samples an
 
 
 
+![model gv](https://github.com/yudhisteer/Learning-3D-Vision-with-Inverse-Graphics/assets/59663734/a715cb5f-5516-412a-aba7-aa541ea796d5)
 
 
 ### 2.2 Fitting a Point Cloud
