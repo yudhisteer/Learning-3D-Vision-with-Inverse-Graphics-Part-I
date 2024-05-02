@@ -364,6 +364,12 @@ Below is an example whereby we take a triangle mesh and the number of samples an
 ### 2.1 Fitting a Voxel Grid 
 
 <p align="center">
+  <img src="https://github.com/yudhisteer/Learning-3D-Vision-with-Inverse-Graphics/assets/59663734/58283911-ff26-46ba-a18b-de972e9a2533"/>
+</p>
+
+
+
+<p align="center">
   <img src="https://github.com/yudhisteer/Learning-3D-Vision-with-Inverse-Graphics/assets/59663734/a54c54b4-2104-4101-af49-e8299255e49b" width="50%" />
 </p>
 
@@ -390,9 +396,15 @@ Below is an example whereby we take a triangle mesh and the number of samples an
 
 ### 2.2 Image to voxel grid
 
+<p align="center">
+  <img src="https://github.com/yudhisteer/Learning-3D-Vision-with-Inverse-Graphics/assets/59663734/0f30d9b9-65d9-4156-8eae-e7b703f17172" width="80%" />
+</p>
 
 
-![model gv](https://github.com/yudhisteer/Learning-3D-Vision-with-Inverse-Graphics/assets/59663734/a715cb5f-5516-412a-aba7-aa541ea796d5)
+
+<p align="center">
+  <img src="https://github.com/yudhisteer/Learning-3D-Vision-with-Inverse-Graphics/assets/59663734/a715cb5f-5516-412a-aba7-aa541ea796d5"/>
+</p>
 
 
 ### 2.2 Fitting a Point Cloud
@@ -445,3 +457,4 @@ Below is an example whereby we take a triangle mesh and the number of samples an
 18. https://numfactory.upc.edu/web/Geometria/signedDistances.html
 19. https://mobile.rodolphe-vaillant.fr/entry/86/implicit-surface-aka-signed-distance-field-definition
 20. https://www.youtube.com/watch?v=KnUFccsAsfs&t=2512s
+21. https://towardsdatascience.com/understanding-pytorch-loss-functions-the-maths-and-algorithms-part-2-104f19346425
