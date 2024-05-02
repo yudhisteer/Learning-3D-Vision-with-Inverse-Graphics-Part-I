@@ -361,7 +361,7 @@ Below is an example whereby we take a triangle mesh and the number of samples an
 <a name="sv3d"></a>
 ## 2. Single View to 3D
 
-### 2.1 Learning to Predict Volumetric 3D
+### 2.1 Fitting a Voxel Grid 
 
 ![image](https://github.com/yudhisteer/Learning-3D-Vision-with-Inverse-Graphics/assets/59663734/a54c54b4-2104-4101-af49-e8299255e49b)
 
@@ -377,11 +377,11 @@ Below is an example whereby we take a triangle mesh and the number of samples an
 
 
 
-### 2.2 Learning to Predict Point Clouds
+### 2.2 Fitting a Point Cloud
 
 
 
-### 2.3 Learning to Predict Meshes
+### 2.3 Fitting a Mesh
 
 
 
