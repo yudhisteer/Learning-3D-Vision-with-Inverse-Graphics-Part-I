@@ -363,6 +363,18 @@ Below is an example whereby we take a triangle mesh and the number of samples an
 
 ### 2.1 Learning to Predict Volumetric 3D
 
+![image](https://github.com/yudhisteer/Learning-3D-Vision-with-Inverse-Graphics/assets/59663734/a54c54b4-2104-4101-af49-e8299255e49b)
+
+<p align="center">
+  <img src="https://github.com/yudhisteer/Learning-3D-Vision-with-Inverse-Graphics/assets/59663734/56b1ecc8-c7e3-44bb-ab57-1cac9c4e0e49" width="30%" />
+  <img src="https://github.com/yudhisteer/Learning-3D-Vision-with-Inverse-Graphics/assets/59663734/b21dde0e-2d7b-48e8-af03-5222f1d08195" width="30%" />
+  <img src="https://github.com/yudhisteer/Learning-3D-Vision-with-Inverse-Graphics/assets/59663734/f63c2471-3cd4-49a7-97d5-ee08931fcdcd" width="30%" />
+</p>
+
+### 2.2 Image to voxel grid
+
+
+
 
 
 ### 2.2 Learning to Predict Point Clouds
