@@ -379,6 +379,15 @@ Below is an example whereby we take a triangle mesh and the number of samples an
   <img src="https://github.com/yudhisteer/Learning-3D-Vision-with-Inverse-Graphics/assets/59663734/be6c7249-56dc-44c8-b8bc-14494418620a" width="30%" />
 </p>
 
+
+<p align="center">
+  <img src="https://github.com/yudhisteer/Learning-3D-Vision-with-Inverse-Graphics/assets/59663734/dae78f84-59a7-4af7-aefc-cf1c2bf99c93" width="30%" />
+  <img src="https://github.com/yudhisteer/Learning-3D-Vision-with-Inverse-Graphics/assets/59663734/032affb2-78e5-439a-a36d-a928c2e150ad" width="30%" />
+  <img src="https://github.com/yudhisteer/Learning-3D-Vision-with-Inverse-Graphics/assets/59663734/6b7e0163-8273-4a0b-9d17-e77f38a2f155" width="30%" />
+</p>
+
+
+
 ### 2.2 Image to voxel grid
 
 
