@@ -415,10 +415,15 @@ Below are the visualization for the ```groud truth```, the ```fitted voxels```, 
 
 
 ### 2.2 Image to voxel grid
+Fitting a voxel grid is easy but now we want to 3D reconstruct a vocel grid from a single image only. For that, we will make use of an ```auto-encoder``` which first ```encode``` the **image** into **latent code** using a ```2D encoder```. We use a **pre-trained** ```ResNet-18``` model from ```torchvision``` to extract **features** from the image. The final classification layer is to make it a ```feature encoder```. Our image will be transformed to a ```latent code```.
+
+Our input image is of size ```[batch_size, 137, 137, 3]```. The encoder transforms it into a latent code of size ```[batch_size, 512]```.  Next, we need to **reconstruct** the latent code into a voxel grid. For that, we first build a decoder using multi-layer perceptron (MLP) only as shown below.
 
 <p align="center">
   <img src="https://github.com/yudhisteer/Learning-3D-Vision-with-Inverse-Graphics/assets/59663734/0f30d9b9-65d9-4156-8eae-e7b703f17172" width="80%" />
 </p>
+
+Secondly, we change our **decoder** to fit the architecture of the paper [Pix2Vox](https://arxiv.org/abs/1901.11153) which uses **3D de-convolutional network** (**transpose convolution**) to upsample ```1 x 1 x 1 ch``` to ```N x N x N x ch```. Note that the latent code is what is actually encoding the ```scene``` (the image) and decoding the latents and decoding the latent will give us a ```scene representation``` (3D model). The input of the decoder is of size ```[batch_size, 512]``` and the output of it is ````[batch_size x 32 x 32 x 32]```.
 
 <p align="center">
   <img src="https://github.com/yudhisteer/Learning-3D-Vision-with-Inverse-Graphics/assets/59663734/3ba408e7-f03d-494d-9fa4-5c16c904a0bb" width="60%" />
