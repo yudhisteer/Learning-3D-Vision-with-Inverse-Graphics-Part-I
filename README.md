@@ -507,7 +507,10 @@ for step in range(start_iter, args.max_iter):
     optimizer.step()
 ```
 
-After training for ```3000``` eppchs with a batch size of ```32``` and a learning rate of ```4e-4```, we achive a loss of ```0.395```.
+After training for ```3000``` epochs with a batch size of ```32``` and a learning rate of ```4e-4```, we achive a loss of ```0.395```.
+
+![image](https://github.com/yudhisteer/Learning-3D-Vision-with-Inverse-Graphics/assets/59663734/22060226-ffb1-4f5c-8539-a713d218082b)
+
 
 In the first row are the **ground truths** and the second row is the **predicted voxels**.
 
