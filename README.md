@@ -420,12 +420,20 @@ Below are the visualization for the ```groud truth```, the ```fitted voxels```, 
   <img src="https://github.com/yudhisteer/Learning-3D-Vision-with-Inverse-Graphics/assets/59663734/0f30d9b9-65d9-4156-8eae-e7b703f17172" width="80%" />
 </p>
 
+<p align="center">
+  <img src="https://github.com/yudhisteer/Learning-3D-Vision-with-Inverse-Graphics/assets/59663734/3ba408e7-f03d-494d-9fa4-5c16c904a0bb" width="60%" />
+</p>
+
+<p align="center">
+  <img src="https://github.com/yudhisteer/Learning-3D-Vision-with-Inverse-Graphics/assets/59663734/742d27ed-5258-4002-9894-4e07f9485312" width="120%" />
+</p>
 
 
+<!---
 <p align="center">
   <img src="https://github.com/yudhisteer/Learning-3D-Vision-with-Inverse-Graphics/assets/59663734/a715cb5f-5516-412a-aba7-aa541ea796d5"/>
 </p>
-
+--->
 
 ### 2.2 Fitting a Point Cloud
 
