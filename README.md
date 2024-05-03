@@ -362,16 +362,37 @@ Below is an example whereby we take a triangle mesh and the number of samples an
 ## 2. Single View to 3D
 
 ### 2.1 Fitting a Voxel Grid 
+Here, wil generate randomly initalized voxel of size ```[b x h x w x d]``` and define **binary cross entropy (BCE)** loss that can help us fit a **3D binary voxel grid** using the ```Adam``` optimizer. 
+
+<p align="center">
+  <img src="https://github.com/yudhisteer/Learning-3D-Vision-with-Inverse-Graphics/assets/59663734/e28d2d01-9c75-424d-b288-c9810ebac72c" width="50%" />
+</p>
+
+In a 3D voxel grid, a value of ```0``` indicates an **empty** cell, while ```1``` signifies an **occupied** cell. Thus, when fitting a voxel grid to a target, the process essentially involves a **logistic regression** problem aimed at ```maximizing the log-likelihood``` of the ground-truth label in each voxel.
 
 <p align="center">
   <img src="https://github.com/yudhisteer/Learning-3D-Vision-with-Inverse-Graphics/assets/59663734/58283911-ff26-46ba-a18b-de972e9a2533"/>
 </p>
 
+We will define a Binary Cross Entropy loss with logits which combines a Sigmoid layer and the BCELoss in one single class. The ```pos_weight``` factor calculates a **weightage** for occupied voxels based on the average value of the target voxels. By dividing 0.5 the weight **inversely** adjusts according to the frequency of occupied voxels in the data. This method addresses **class imbalances** where we have more unoccupied cells than occupied ones.
 
+```python
+def voxel_loss(voxel_src: torch.Tensor, voxel_tgt: torch.Tensor) -> torch.Tensor:
+    # voxel_src: b x h x w x d
+    # voxel_tgt: b x h x w x d
+    pos_weight = (0.5 / voxel_tgt.mean())
+    criterion = torch.nn.BCEWithLogitsLoss(reduction='mean', pos_weight=pos_weight)
+    loss = criterion(voxel_src, voxel_tgt)
+    return loss
+```
+
+We train our data for 10000 iterations and observe the loss steadily decreases to about ```0.1```. This reflects effective learning and model optimization.
 
 <p align="center">
   <img src="https://github.com/yudhisteer/Learning-3D-Vision-with-Inverse-Graphics/assets/59663734/a54c54b4-2104-4101-af49-e8299255e49b" width="50%" />
 </p>
+
+Below are the visualization for the ```groud truth```, the ```fitted voxels```, and the ```optimization progress``` respectively.
 
 <p align="center">
   <img src="https://github.com/yudhisteer/Learning-3D-Vision-with-Inverse-Graphics/assets/59663734/56b1ecc8-c7e3-44bb-ab57-1cac9c4e0e49" width="30%" />
@@ -384,7 +405,6 @@ Below is an example whereby we take a triangle mesh and the number of samples an
   <img src="https://github.com/yudhisteer/Learning-3D-Vision-with-Inverse-Graphics/assets/59663734/d108d801-916f-4df6-9758-3de685454cee" width="30%" />
   <img src="https://github.com/yudhisteer/Learning-3D-Vision-with-Inverse-Graphics/assets/59663734/be6c7249-56dc-44c8-b8bc-14494418620a" width="30%" />
 </p>
-
 
 <p align="center">
   <img src="https://github.com/yudhisteer/Learning-3D-Vision-with-Inverse-Graphics/assets/59663734/dae78f84-59a7-4af7-aefc-cf1c2bf99c93" width="30%" />
