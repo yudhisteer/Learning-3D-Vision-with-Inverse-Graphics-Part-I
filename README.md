@@ -368,7 +368,7 @@ Here, wil generate randomly initalized voxel of size ```[b x h x w x d]``` and d
   <img src="https://github.com/yudhisteer/Learning-3D-Vision-with-Inverse-Graphics/assets/59663734/e28d2d01-9c75-424d-b288-c9810ebac72c" width="50%" />
 </p>
 
-In a 3D voxel grid, a value of ```0``` indicates an **empty** cell, while ```1``` signifies an **occupied** cell. Thus, when fitting a voxel grid to a target, the process essentially involves a **logistic regression** problem aimed at ```maximizing the log-likelihood``` of the ground-truth label in each voxel.
+In a 3D voxel grid, a value of ```0``` indicates an **empty** cell, while ```1``` signifies an **occupied** cell. Thus, when fitting a voxel grid to a target, the process essentially involves a **logistic regression** problem aimed at ```maximizing the log-likelihood``` of the ground-truth label in each voxel. In summary, the loss function is the mean value of the voxel-wise binary cross entropies between the reconstructed object and the ground truth. In the equation below, N is the number of voxels in thr ground truth. ```y``` and ```y-hat``` is the predicted occupancy and the corresponding ground truth respectively. 
 
 <p align="center">
   <img src="https://github.com/yudhisteer/Learning-3D-Vision-with-Inverse-Graphics/assets/59663734/58283911-ff26-46ba-a18b-de972e9a2533"/>
