@@ -386,13 +386,33 @@ def voxel_loss(voxel_src: torch.Tensor, voxel_tgt: torch.Tensor) -> torch.Tensor
     return loss
 ```
 
+Below is the code to fit a voxel:
+
+```python
+# Generate voxel source with randomly initialized values
+voxels_src = torch.rand(feed_cuda["voxels"].shape, requires_grad=True, device=args.device)
+
+# Initialize optimizer to optimize voxel source
+optimizer = torch.optim.Adam([voxels_src], lr=args.lr)
+
+for step in tqdm(range(start_iter, args.max_iter)):
+    # Calculate loss
+    loss = voxel_loss(voxels_src, voxels_tgt)
+    # Zero the gradients before backpropagation.
+    optimizer.zero_grad()
+    # Backpropagate the loss to compute the gradients.
+    loss.backward()
+    # Update the model parameters based on the computed gradients.
+    optimizer.step()
+```
+
 We train our data for 10000 iterations and observe the loss steadily decreases to about ```0.1```. This reflects effective learning and model optimization.
 
 <p align="center">
   <img src="https://github.com/yudhisteer/Learning-3D-Vision-with-Inverse-Graphics/assets/59663734/a54c54b4-2104-4101-af49-e8299255e49b" width="50%" />
 </p>
 
-Below are the visualization for the ```groud truth```, the ```fitted voxels```, and the ```optimization progress``` respectively.
+Below are the visualization for the ```ground truth```, the ```fitted voxels```, and the ```optimization progress``` respectively.
 
 <p align="center">
   <img src="https://github.com/yudhisteer/Learning-3D-Vision-with-Inverse-Graphics/assets/59663734/56b1ecc8-c7e3-44bb-ab57-1cac9c4e0e49" width="30%" />
@@ -434,6 +454,34 @@ Secondly, we change our **decoder** to fit the architecture of the paper [Pix2Vo
 <p align="center">
   <img src="https://github.com/yudhisteer/Learning-3D-Vision-with-Inverse-Graphics/assets/59663734/742d27ed-5258-4002-9894-4e07f9485312" width="120%" />
 </p>
+
+```python
+# Set model to training mode
+model.train()
+# Initialize the Adam optimizer with model parameters and learning rate
+optimizer = torch.optim.Adam(model.parameters(), lr=args.lr)
+
+# Loop through the training steps
+for step in range(start_iter, args.max_iter):
+    # Restart the iterator when a new epoch begins
+    if step % len(train_loader) == 0:
+        train_loader = iter(loader)
+
+    # Fetch the next batch of data
+    feed_dict = next(train_loader)
+    # Preprocess the data into the required format
+    images_gt, ground_truth_3d = preprocess(feed_dict, args)  # [32, 137, 137, 3], [32, 1, 32, 32, 32]
+    # Generate predictions from the model
+    prediction_3d = model(images_gt, args)  # [32, 1, 32, 32, 32])  # voxels_pred
+    # Calculate the loss based on predict
+    loss = calculate_loss(prediction_3d, ground_truth_3d, args)
+    # Zero the parameter gradients
+    optimizer.zero_grad()
+    # Backpropagate to compute gradients
+    loss.backward()
+    # Update model parameters
+    optimizer.step()
+```
 
 After training for ```3000``` eppchs with a batch size of ```32``` and a learning rate of ```4e-4```, we achive a loss of ```0.395```.
 
