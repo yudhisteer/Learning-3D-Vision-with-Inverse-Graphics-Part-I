@@ -443,12 +443,36 @@ Fitting a voxel grid is easy but now we want to 3D reconstruct a vocel grid from
 
 Our input image is of size ```[batch_size, 137, 137, 3]```. The encoder transforms it into a latent code of size ```[batch_size, 512]```.  Next, we need to **reconstruct** the latent code into a voxel grid. For that, we first build a decoder using multi-layer perceptron (MLP) only as shown below.
 
+```python
+self.decoder = torch.nn.Sequential(
+    nn.Linear(512, 1024),
+    nn.PReLU(),
+    nn.Linear(1024, 32*32*32)
+)
+```
 
 <p align="center">
   <img src="https://github.com/yudhisteer/Learning-3D-Vision-with-Inverse-Graphics/assets/59663734/3ba408e7-f03d-494d-9fa4-5c16c904a0bb" width="60%" />
 </p>
 
 Secondly, we change our **decoder** to fit the architecture of the paper [Pix2Vox](https://arxiv.org/abs/1901.11153) which uses **3D de-convolutional network** (**transpose convolution**) to upsample ```1 x 1 x 1 ch``` to ```N x N x N x ch```. Note that the latent code is what is actually encoding the ```scene``` (the image) and decoding the latents and decoding the latent will give us a ```scene representation``` (3D model). The input of the decoder is of size ```[batch_size, 512]``` and the output of it is ```[batch_size x 32 x 32 x 32]```.
+
+```python
+self.fc = nn.Linear(512, 128 * 4 * 4 * 4)
+self.decoder = nn.Sequential(
+    nn.ConvTranspose3d(128, 64, kernel_size=4, stride=2, padding=1),
+    nn.BatchNorm3d(64),
+    nn.ReLU(),
+    nn.ConvTranspose3d(64, 32, kernel_size=4, stride=2, padding=1),
+    nn.BatchNorm3d(32),
+    nn.ReLU(),
+    nn.ConvTranspose3d(32, 8, kernel_size=4, stride=2, padding=1),
+    nn.BatchNorm3d(8),
+    nn.ReLU(),
+    nn.Conv3d(8, 1, kernel_size=1),
+    nn.Sigmoid()
+)
+```
 
 
 <p align="center">
