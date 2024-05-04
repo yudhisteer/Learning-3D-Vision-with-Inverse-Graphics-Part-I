@@ -541,11 +541,12 @@ In the first row are the **ground truths** and the second row is the **predicted
 </p>
 --->
 
-### 2.2 Fitting a Point Cloud
+### 2.3 Fitting a Point Cloud
 
 
+### 2.4 Image to voxel grid
 
-### 2.3 Fitting a Mesh
+### 2.5 Fitting a Mesh
 
 <p align="center">
   <img src="https://github.com/yudhisteer/Learning-3D-Vision-with-Inverse-Graphics/assets/59663734/40e4c04b-9a7c-49b6-b619-59885da478c1" width="50%" />
@@ -653,6 +654,11 @@ In the first row are the **ground truths** and the second row is the **predicted
     <td></td>
   </tr>
 </table>
+
+### 2.6 Image to Mesh
+
+
+![mesh_ onnx](https://github.com/yudhisteer/Learning-3D-Vision-with-Inverse-Graphics/assets/59663734/726ea258-08de-4336-84f1-ff564fa6ae41)
 
 
 -------------------------
