@@ -661,6 +661,9 @@ In the first row are the **ground truths** and the second row is the **predicted
 ![mesh_ onnx](https://github.com/yudhisteer/Learning-3D-Vision-with-Inverse-Graphics/assets/59663734/726ea258-08de-4336-84f1-ff564fa6ae41)
 
 
+<img width="652" alt="image" src="https://github.com/yudhisteer/Learning-3D-Vision-with-Inverse-Graphics/assets/59663734/d71effb6-24f6-4b8e-88d1-a8a3a739dc6f">
+
+
 -------------------------
 <a name="ps"></a>
 ## 3. Photorealism Spectrum
