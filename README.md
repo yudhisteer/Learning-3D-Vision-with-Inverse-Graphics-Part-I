@@ -509,7 +509,18 @@ for step in range(start_iter, args.max_iter):
 
 After training for ```3000``` epochs with a batch size of ```32``` and a learning rate of ```4e-4```, we achive a loss of ```0.395```.
 
-![image](https://github.com/yudhisteer/Learning-3D-Vision-with-Inverse-Graphics/assets/59663734/22060226-ffb1-4f5c-8539-a713d218082b)
+
+
+<table style="width:100%">
+  <tr>
+    <th style="width:50%; text-align:center">Decoder with MLP</th>
+    <th style="width:50%; text-align:center">Decoder with 3D De-conv</th>
+  </tr>
+  <tr>
+    <td style="text-align:center"><img src="https://github.com/yudhisteer/Learning-3D-Vision-with-Inverse-Graphics/assets/59663734/22060226-ffb1-4f5c-8539-a713d218082b" style="width:100%"/></td>
+    <td style="text-align:center"><img src="https://github.com/yudhisteer/Learning-3D-Vision-with-Inverse-Graphics/assets/59663734/2e9b5a92-f5e5-4242-8f96-73ebe112b502" style="width:100%"/></td>
+  </tr>
+</table>
 
 
 In the first row are the **ground truths** and the second row is the **predicted voxels**.
@@ -528,10 +539,12 @@ In the first row are the **ground truths** and the second row is the **predicted
 
 ### 2.3 Fitting a Mesh
 
+<p align="center">
+  <img src="https://github.com/yudhisteer/Learning-3D-Vision-with-Inverse-Graphics/assets/59663734/40e4c04b-9a7c-49b6-b619-59885da478c1" width="50%" />
+</p>
 
 
-
-
+![image](https://github.com/yudhisteer/Learning-3D-Vision-with-Inverse-Graphics/assets/59663734/900a6749-bae1-41fe-b9cc-e814da213846)
 
 
 
