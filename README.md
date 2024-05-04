@@ -412,25 +412,30 @@ We train our data for 10000 iterations and observe the loss steadily decreases t
   <img src="https://github.com/yudhisteer/Learning-3D-Vision-with-Inverse-Graphics/assets/59663734/a54c54b4-2104-4101-af49-e8299255e49b" width="50%" />
 </p>
 
-Below are the visualization for the ```ground truth```, the ```fitted voxels```, and the ```optimization progress``` respectively.
+Below are the visualization for the ```ground truth```, the ```fitted voxels```, and the ```optimization progress``` results.
 
-<p align="center">
-  <img src="https://github.com/yudhisteer/Learning-3D-Vision-with-Inverse-Graphics/assets/59663734/56b1ecc8-c7e3-44bb-ab57-1cac9c4e0e49" width="30%" />
-  <img src="https://github.com/yudhisteer/Learning-3D-Vision-with-Inverse-Graphics/assets/59663734/b21dde0e-2d7b-48e8-af03-5222f1d08195" width="30%" />
-  <img src="https://github.com/yudhisteer/Learning-3D-Vision-with-Inverse-Graphics/assets/59663734/f63c2471-3cd4-49a7-97d5-ee08931fcdcd" width="30%" />
-</p>
-
-<p align="center">
-  <img src="https://github.com/yudhisteer/Learning-3D-Vision-with-Inverse-Graphics/assets/59663734/d5b45a63-fff1-4626-8fcd-df8574fdb789" width="30%" />
-  <img src="https://github.com/yudhisteer/Learning-3D-Vision-with-Inverse-Graphics/assets/59663734/d108d801-916f-4df6-9758-3de685454cee" width="30%" />
-  <img src="https://github.com/yudhisteer/Learning-3D-Vision-with-Inverse-Graphics/assets/59663734/be6c7249-56dc-44c8-b8bc-14494418620a" width="30%" />
-</p>
-
-<p align="center">
-  <img src="https://github.com/yudhisteer/Learning-3D-Vision-with-Inverse-Graphics/assets/59663734/dae78f84-59a7-4af7-aefc-cf1c2bf99c93" width="30%" />
-  <img src="https://github.com/yudhisteer/Learning-3D-Vision-with-Inverse-Graphics/assets/59663734/032affb2-78e5-439a-a36d-a928c2e150ad" width="30%" />
-  <img src="https://github.com/yudhisteer/Learning-3D-Vision-with-Inverse-Graphics/assets/59663734/6b7e0163-8273-4a0b-9d17-e77f38a2f155" width="30%" />
-</p>
+<table>
+  <tr>
+    <th style="width:50%; text-align:center">Ground Truth</th>
+    <th style="width:50%; text-align:center">Fitted</th>
+    <th style="width:50%; text-align:center">Progress</th>
+  </tr>
+  <tr>
+    <td><img src="https://github.com/yudhisteer/Learning-3D-Vision-with-Inverse-Graphics/assets/59663734/56b1ecc8-c7e3-44bb-ab57-1cac9c4e0e49" width="100%" /></td>
+    <td><img src="https://github.com/yudhisteer/Learning-3D-Vision-with-Inverse-Graphics/assets/59663734/b21dde0e-2d7b-48e8-af03-5222f1d08195" width="100%" /></td>
+    <td><img src="https://github.com/yudhisteer/Learning-3D-Vision-with-Inverse-Graphics/assets/59663734/f63c2471-3cd4-49a7-97d5-ee08931fcdcd" width="100%" /></td>
+  </tr>
+  <tr>
+    <td><img src="https://github.com/yudhisteer/Learning-3D-Vision-with-Inverse-Graphics/assets/59663734/d5b45a63-fff1-4626-8fcd-df8574fdb789" width="100%" /></td>
+    <td><img src="https://github.com/yudhisteer/Learning-3D-Vision-with-Inverse-Graphics/assets/59663734/d108d801-916f-4df6-9758-3de685454cee" width="100%" /></td>
+    <td><img src="https://github.com/yudhisteer/Learning-3D-Vision-with-Inverse-Graphics/assets/59663734/be6c7249-56dc-44c8-b8bc-14494418620a" width="100%" /></td>
+  </tr>
+  <tr>
+    <td><img src="https://github.com/yudhisteer/Learning-3D-Vision-with-Inverse-Graphics/assets/59663734/dae78f84-59a7-4af7-aefc-cf1c2bf99c93" width="100%" /></td>
+    <td><img src="https://github.com/yudhisteer/Learning-3D-Vision-with-Inverse-Graphics/assets/59663734/032affb2-78e5-439a-a36d-a928c2e150ad" width="100%" /></td>
+    <td><img src="https://github.com/yudhisteer/Learning-3D-Vision-with-Inverse-Graphics/assets/59663734/6b7e0163-8273-4a0b-9d17-e77f38a2f155" width="100%" /></td>
+  </tr>
+</table>
 
 
 
@@ -510,7 +515,6 @@ for step in range(start_iter, args.max_iter):
 After training for ```3000``` epochs with a batch size of ```32``` and a learning rate of ```4e-4```, we achive a loss of ```0.395```.
 
 
-
 <table style="width:100%">
   <tr>
     <th style="width:50%; text-align:center">Decoder with MLP</th>
@@ -544,10 +548,9 @@ In the first row are the **ground truths** and the second row is the **predicted
 </p>
 
 
-![image](https://github.com/yudhisteer/Learning-3D-Vision-with-Inverse-Graphics/assets/59663734/900a6749-bae1-41fe-b9cc-e814da213846)
-
-
-
+<p align="center">
+  <img src="https://github.com/yudhisteer/Learning-3D-Vision-with-Inverse-Graphics/assets/59663734/900a6749-bae1-41fe-b9cc-e814da213846" width="50%" />
+</p>
 
 
 -------------------------
