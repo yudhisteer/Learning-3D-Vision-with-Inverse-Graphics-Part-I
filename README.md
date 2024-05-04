@@ -628,6 +628,29 @@ In the first row are the **ground truths** and the second row is the **predicted
 </table>
 
 
+
+
+
+<table style="width:100%">
+  <tr>
+    <td><img src="https://github.com/yudhisteer/Learning-3D-Vision-with-Inverse-Graphics/assets/59663734/3a19d1bb-8b55-402b-9844-5b7b289c791a" style="width:100%"/></td>
+    <td><img src="https://github.com/yudhisteer/Learning-3D-Vision-with-Inverse-Graphics/assets/59663734/bdf7004f-6f9a-412c-9a52-18a562901080" style="width:100%"/></td>
+    <td><img src="https://github.com/yudhisteer/Learning-3D-Vision-with-Inverse-Graphics/assets/59663734/1a9c5530-acad-4866-a593-b3b66081a5b3" style="width:100%"/></td>
+    <td><img src="https://github.com/yudhisteer/Learning-3D-Vision-with-Inverse-Graphics/assets/59663734/d1951b89-cb72-4053-a9c0-811d3a469a71" style="width:100%"/></td>
+    <td><img src="https://github.com/yudhisteer/Learning-3D-Vision-with-Inverse-Graphics/assets/59663734/7af9c989-94e9-493e-be0c-c7aa670b394a" style="width:100%"/></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td><img src="https://github.com/yudhisteer/Learning-3D-Vision-with-Inverse-Graphics/assets/59663734/5c3f8d59-895b-4ac7-b9d8-daae55736224" style="width:100%"/></td>
+    <td><img src="https://github.com/yudhisteer/Learning-3D-Vision-with-Inverse-Graphics/assets/59663734/0b63e219-867f-4b03-9dbd-87fed4a74fa3" style="width:100%"/></td>
+    <td><img src="https://github.com/yudhisteer/Learning-3D-Vision-with-Inverse-Graphics/assets/59663734/aad59035-1631-4307-8c0f-7c4f97ecca61" style="width:100%"/></td>
+    <td><img src="https://github.com/yudhisteer/Learning-3D-Vision-with-Inverse-Graphics/assets/59663734/7dff48f0-1fa2-4849-ac4a-e3a76aea132d" style="width:100%"/></td>
+    <td><img src="https://github.com/yudhisteer/Learning-3D-Vision-with-Inverse-Graphics/assets/59663734/2d65ea1b-140d-4c21-ab5b-747bcee30ae3" style="width:100%"/></td>
+    <td></td>
+  </tr>
+</table>
+
+
 -------------------------
 <a name="ps"></a>
 ## 3. Photorealism Spectrum
