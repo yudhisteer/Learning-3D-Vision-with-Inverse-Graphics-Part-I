@@ -567,6 +567,31 @@ In the first row are the **ground truths** and the second row is the **predicted
 
 
 
+
+<table style="width:100%">
+  <tr>
+    <th style="width:50%; text-align:center">Ground Truth</th>
+    <th style="width:50%; text-align:center">Fitted</th>
+    <th style="width:50%; text-align:center">Progress</th>
+  </tr>
+  <tr>
+    <td><img src="https://github.com/yudhisteer/Learning-3D-Vision-with-Inverse-Graphics/assets/59663734/3c4dd82f-4d93-4b31-b24f-c18855b42308" style="width:100%"/></td>
+    <td><img src="https://github.com/yudhisteer/Learning-3D-Vision-with-Inverse-Graphics/assets/59663734/0427949e-8758-4d28-a3c8-f987349a9ddf" style="width:100%"/></td>
+    <td><img src="https://github.com/yudhisteer/Learning-3D-Vision-with-Inverse-Graphics/assets/59663734/fef4f274-fc17-4105-921d-c254f97b1a18" style="width:100%"/></td>
+  </tr>
+  <tr>
+    <td><img src="https://github.com/yudhisteer/Learning-3D-Vision-with-Inverse-Graphics/assets/59663734/252ad3b5-2d53-483b-9adb-5b91b843558e" style="width:100%"/></td>
+    <td><img src="https://github.com/yudhisteer/Learning-3D-Vision-with-Inverse-Graphics/assets/59663734/10975277-c046-4550-b12e-3900719eac7b" style="width:100%"/></td>
+    <td><img src="https://github.com/yudhisteer/Learning-3D-Vision-with-Inverse-Graphics/assets/59663734/605cfad4-76f3-43b5-b5bc-b07abd621fda" style="width:100%"/></td>
+  </tr>
+  <tr>
+    <td><img src="https://github.com/yudhisteer/Learning-3D-Vision-with-Inverse-Graphics/assets/59663734/bcabc41e-8671-40c0-922b-099bc0801010" style="width:100%"/></td>
+    <td><img src="https://github.com/yudhisteer/Learning-3D-Vision-with-Inverse-Graphics/assets/59663734/6057f7dc-ec2d-44a3-8da7-2a5efe9cd6aa" style="width:100%"/></td>
+    <td><img src="https://github.com/yudhisteer/Learning-3D-Vision-with-Inverse-Graphics/assets/59663734/2df8826e-33a2-4565-869a-44cffbfb3135" style="width:100%"/></td>
+  </tr>
+</table>
+
+
 ### 2.4 Image to Point Cloud
 
 
