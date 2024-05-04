@@ -535,6 +535,10 @@ In the first row are the **ground truths** and the second row is the **predicted
 <p align="center">
   <img src="https://github.com/yudhisteer/Learning-3D-Vision-with-Inverse-Graphics/assets/59663734/a715cb5f-5516-412a-aba7-aa541ea796d5"/>
 </p>
+<p align="center">
+  <img src="https://github.com/yudhisteer/Learning-3D-Vision-with-Inverse-Graphics/assets/59663734/63b1b4ff-9db6-4f0c-9814-2f93301f7543" width="20%" />
+  <img src="https://github.com/yudhisteer/Learning-3D-Vision-with-Inverse-Graphics/assets/59663734/cafd3c8d-73e2-477e-835e-c2aec9bb8656" width="20%" />
+</p>
 --->
 
 ### 2.2 Fitting a Point Cloud
@@ -661,7 +665,6 @@ In the first row are the **ground truths** and the second row is the **predicted
 -------------------------
 <a name="dr"></a>
 ## 4. Differential Rendering
-
 
 
 -------------------------
