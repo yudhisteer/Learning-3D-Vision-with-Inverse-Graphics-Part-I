@@ -553,6 +553,49 @@ In the first row are the **ground truths** and the second row is the **predicted
 </p>
 
 
+
+# Mesh Comparison
+
+<table style="width:100%">
+  <tr>
+    <th style="width:50%; text-align:center">Ground Truth</th>
+    <th style="width:50%; text-align:center">Fitted</th>
+    <th style="width:50%; text-align:center">Progress</th>
+  </tr>
+  <tr>
+    <td><img src="https://github.com/yudhisteer/Learning-3D-Vision-with-Inverse-Graphics/assets/59663734/94cd8ed1-b838-4392-a242-a22cfe38fbcb" style="width:100%"/></td>
+    <td><img src="https://github.com/yudhisteer/Learning-3D-Vision-with-Inverse-Graphics/assets/59663734/477e5d27-d60b-46cd-91da-f61798841209" style="width:100%"/></td>
+    <td><img src="https://github.com/yudhisteer/Learning-3D-Vision-with-Inverse-Graphics/assets/59663734/5b37e5fa-61c0-40af-84a4-c20365b406f4" style="width:100%"/></td>
+  </tr>
+  <tr>
+    <td><img src="https://github.com/yudhisteer/Learning-3D-Vision-with-Inverse-Graphics/assets/59663734/b3af6ebc-b4b7-42c0-88f3-388d895607df" style="width:100%"/></td>
+    <td><img src="https://github.com/yudhisteer/Learning-3D-Vision-with-Inverse-Graphics/assets/59663734/f737c539-ac02-4e14-86c1-089242e1de16" style="width:100%"/></td>
+    <td><img src="https://github.com/yudhisteer/Learning-3D-Vision-with-Inverse-Graphics/assets/59663734/6c1dc90a-c326-4d4c-860d-ab8b4dc8f643" style="width:100%"/></td>
+  </tr>
+  <tr>
+    <td><img src="https://github.com/yudhisteer/Learning-3D-Vision-with-Inverse-Graphics/assets/59663734/a603dc1c-eebf-4c3c-8102-838a2204117c" style="width:100%"/></td>
+    <td><img src="https://github.com/yudhisteer/Learning-3D-Vision-with-Inverse-Graphics/assets/59663734/1492a522-4000-4bb9-ac78-c99272c07957" style="width:100%"/></td>
+    <td><img src="https://github.com/yudhisteer/Learning-3D-Vision-with-Inverse-Graphics/assets/59663734/80e16760-3793-4dea-9155-2eb2ebd35203" style="width:100%"/></td>
+  </tr>
+  <tr>
+    <td><img src="https://github.com/yudhisteer/Learning-3D-Vision-with-Inverse-Graphics/assets/59663734/08844638-5ce4-4f28-ae34-35baf5556aa2" style="width:100%"/></td>
+    <td><img src="https://github.com/yudhisteer/Learning-3D-Vision-with-Inverse-Graphics/assets/59663734/3a420ec6-f083-4f4b-8a55-9a19245751e2" style="width:100%"/></td>
+    <td><img src="https://github.com/yudhisteer/Learning-3D-Vision-with-Inverse-Graphics/assets/59663734/37447573-acec-4ed4-a6dd-d6ae96ca5bd9" style="width:100%"/></td>
+  </tr>
+  <tr>
+    <td><img src="https://github.com/yudhisteer/Learning-3D-Vision-with-Inverse-Graphics/assets/59663734/dc9de70a-747a-4a0a-9a34-aa22bc112e17" style="width:100%"/></td>
+    <td><img src="https://github.com/yudhisteer/Learning-3D-Vision-with-Inverse-Graphics/assets/59663734/545bdae9-4465-4893-8aa8-1b450c9f7916" style="width:100%"/></td>
+    <td><img src="https://github.com/yudhisteer/Learning-3D-Vision-with-Inverse-Graphics/assets/59663734/d63abc43-b337-43aa-9b60-a4db86915374" style="width:100%"/></td>
+  </tr>
+  <tr>
+    <td><img src="https://github.com/yudhisteer/Learning-3D-Vision-with-Inverse-Graphics/assets/59663734/50573e49-48d0-4069-b941-10cdd4c00043" style="width:100%"/></td>
+    <td><img src="https://github.com/yudhisteer/Learning-3D-Vision-with-Inverse-Graphics/assets/59663734/c9e6fc04-2b8e-4296-9106-aad604a79aa6" style="width:100%"/></td>
+    <td><img src="https://github.com/yudhisteer/Learning-3D-Vision-with-Inverse-Graphics/assets/59663734/1c6e029e-f899-44b2-b883-1f862090fe4f" style="width:100%"/></td>
+  </tr>
+</table>
+
+
+
 -------------------------
 <a name="ps"></a>
 ## 3. Photorealism Spectrum
