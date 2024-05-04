@@ -549,8 +549,6 @@ In the first row are the **ground truths** and the second row is the **predicted
 </table>
 
 
-
-
 <!---
 <p align="center">
   <img src="https://github.com/yudhisteer/Learning-3D-Vision-with-Inverse-Graphics/assets/59663734/a715cb5f-5516-412a-aba7-aa541ea796d5"/>
@@ -562,6 +560,11 @@ In the first row are the **ground truths** and the second row is the **predicted
 --->
 
 ### 2.3 Fitting a Point Cloud
+
+<p align="center">
+  <img src="https://github.com/yudhisteer/Learning-3D-Vision-with-Inverse-Graphics/assets/59663734/92ceddbd-e8a9-4e43-9d11-a8de9a2d232a" width="50%" />
+</p>
+
 
 
 ### 2.4 Image to Point Cloud
