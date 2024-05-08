@@ -372,7 +372,9 @@ To fit a voxel, we wil first generate a **randomly initalized** voxel of size ``
   <img src="https://github.com/yudhisteer/Learning-3D-Vision-with-Inverse-Graphics/assets/59663734/e28d2d01-9c75-424d-b288-c9810ebac72c" width="50%" />
 </p>
 
-In a 3D voxel grid, a value of ```0``` indicates an **empty** cell, while ```1``` signifies an **occupied** cell. Thus, when fitting a voxel grid to a target, the process essentially involves a **binary classification** problem aimed at ```maximizing the log-likelihood``` of the ground-truth label in each voxel. In summary, the loss function is the mean value of the voxel-wise binary cross entropies between the reconstructed object and the ground truth. In the equation below, N is the number of voxels in thr ground truth. ```y``` and ```y-hat``` is the predicted occupancy and the corresponding ground truth respectively. 
+In a 3D voxel grid, a value of ```0``` indicates an **empty** cell, while ```1``` signifies an **occupied** cell. Thus, when fitting a voxel grid to a target, the process essentially involves solving a **binary classification** problem aimed at ```maximizing the log-likelihood``` of the ground-truth label in each voxel. That is, we will be predicting an **occupancy score** for every point in the voxel grid and we compare that with the binary occupancy in our ground truths. 
+
+In summary, the BCE loss function is the mean value of the voxel-wise binary cross entropies between the reconstructed object and the ground truth. In the equation below, ```N``` is the number of voxels in the ground truth. ```y``` and ```y-hat``` is the predicted occupancy and the corresponding ground truth respectively. 
 
 <p align="center">
   <img src="https://github.com/yudhisteer/Learning-3D-Vision-with-Inverse-Graphics/assets/59663734/58283911-ff26-46ba-a18b-de972e9a2533"/>
@@ -573,10 +575,23 @@ Similarly, to fitting a voxel, we generate a point cloud with random ```xyz``` v
 
 Note that a point cloud represents a set of P points in 3D space. It can represent fine structures a huge numebr of poitns as we see below in the visualizations which uses ```1000``` points only. However, it does not explicitly represent the surface of the of a shape hence, we need to extract a mesh from the point cloud. I explain more about point cloud in my other projects: [Point Clouds: 3D Perception with Open3D](https://github.com/yudhisteer/Point-Clouds-3D-Perception-with-Open3D) and [Robotic Grasping Detection with PointNet](https://github.com/yudhisteer/Robotic-Grasping-Detection-with-PointNet).
 
+To fit a point cloud, we need a differentiable way to compare pointclouds as sets because **order does not matter**! We use the Chamfer distance which is the sum of L2 distance to each point's nearest neighbor in the other set. Suppose we have a gorund truth point cloud and a predicted point cloud. For each point in the ground truth set, we get its **nearest neighbor** in the predicted set, and their **Euclidean distance** is calculated. These distances are summed to form the first term of the equation below. Similarly, for each predicted point, the nearest ground truth point is found, and the distance to this neighbor is similarly summed to create the second term of the loss. The Chamfer loss is the total of these two sums, indicating the average mismatch between the two sets. A ```zero Chamfer loss```, signifying **perfect alignment**, occurs only when each point in one set **exactly coincides** with a point in the other set. Ibn summary, the chamfer loss guides the learning process by comparing the predicted point cloud against a ground truth set, regardless of the order of points in either set.
+
+<p align="center">
+  <img src="https://github.com/yudhisteer/Learning-3D-Vision-with-Inverse-Graphics/assets/59663734/737c31c4-f7a7-410c-b62b-e82e2dd148af" />
+</p>
+
+```python
+from pytorch3d.ops import knn_points
+def chamfer_loss(point_cloud_src, point_cloud_tgt):
+    dist1 = knn_points(point_cloud_src, point_cloud_tgt)
+    dist2 = knn_points(point_cloud_tgt, point_cloud_src)
+    loss_chamfer = torch.sum(dist1.dists) + torch.sum(dist2.dists)
+    return loss_chamfer
+```
 
 
-We train our data for 10000 iterations and observe the loss steadily decreases to about ```0.014```. This reflects effective learning and model optimization.
-
+We train our data for ```10000``` iterations and observe the loss steadily decreases to about ```0.014```.
 <p align="center">
   <img src="https://github.com/yudhisteer/Learning-3D-Vision-with-Inverse-Graphics/assets/59663734/92ceddbd-e8a9-4e43-9d11-a8de9a2d232a" width="50%" />
 </p>
