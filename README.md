@@ -361,14 +361,18 @@ Below is an example whereby we take a triangle mesh and the number of samples an
 <a name="sv3d"></a>
 ## 2. Single View to 3D
 
+<p align="center">
+  <img src="https://github.com/yudhisteer/Learning-3D-Vision-with-Inverse-Graphics/assets/59663734/0f30d9b9-65d9-4156-8eae-e7b703f17172" width="80%" />
+</p>
+
 ### 2.1 Fitting a Voxel Grid 
-Here, wil generate randomly initalized voxel of size ```[b x h x w x d]``` and define **binary cross entropy (BCE)** loss that can help us fit a **3D binary voxel grid** using the ```Adam``` optimizer. 
+To fit a voxel, we wil first generate a **randomly initalized** voxel of size ```[b x h x w x d]``` and define a **binary cross entropy (BCE)** loss that can help us fit a **3D binary voxel grid** using the ```Adam``` optimizer. 
 
 <p align="center">
   <img src="https://github.com/yudhisteer/Learning-3D-Vision-with-Inverse-Graphics/assets/59663734/e28d2d01-9c75-424d-b288-c9810ebac72c" width="50%" />
 </p>
 
-In a 3D voxel grid, a value of ```0``` indicates an **empty** cell, while ```1``` signifies an **occupied** cell. Thus, when fitting a voxel grid to a target, the process essentially involves a **logistic regression** problem aimed at ```maximizing the log-likelihood``` of the ground-truth label in each voxel. In summary, the loss function is the mean value of the voxel-wise binary cross entropies between the reconstructed object and the ground truth. In the equation below, N is the number of voxels in thr ground truth. ```y``` and ```y-hat``` is the predicted occupancy and the corresponding ground truth respectively. 
+In a 3D voxel grid, a value of ```0``` indicates an **empty** cell, while ```1``` signifies an **occupied** cell. Thus, when fitting a voxel grid to a target, the process essentially involves a **binary classification** problem aimed at ```maximizing the log-likelihood``` of the ground-truth label in each voxel. In summary, the loss function is the mean value of the voxel-wise binary cross entropies between the reconstructed object and the ground truth. In the equation below, N is the number of voxels in thr ground truth. ```y``` and ```y-hat``` is the predicted occupancy and the corresponding ground truth respectively. 
 
 <p align="center">
   <img src="https://github.com/yudhisteer/Learning-3D-Vision-with-Inverse-Graphics/assets/59663734/58283911-ff26-46ba-a18b-de972e9a2533"/>
@@ -442,10 +446,6 @@ Below are the visualization for the ```ground truth```, the ```fitted voxels```,
 ### 2.2 Image to voxel grid
 Fitting a voxel grid is easy but now we want to 3D reconstruct a vocel grid from a single image only. For that, we will make use of an ```auto-encoder``` which first ```encode``` the **image** into **latent code** using a ```2D encoder```. We use a **pre-trained** ```ResNet-18``` model from ```torchvision``` to extract **features** from the image. The final classification layer is to make it a ```feature encoder```. Our image will be transformed to a ```latent code```.
 
-<p align="center">
-  <img src="https://github.com/yudhisteer/Learning-3D-Vision-with-Inverse-Graphics/assets/59663734/0f30d9b9-65d9-4156-8eae-e7b703f17172" width="80%" />
-</p>
-
 Our input image is of size ```[batch_size, 137, 137, 3]```. The encoder transforms it into a latent code of size ```[batch_size, 512]```.  Next, we need to **reconstruct** the latent code into a voxel grid. For that, we first build a decoder using multi-layer perceptron (MLP) only as shown below.
 
 ```python
@@ -460,7 +460,7 @@ self.decoder = torch.nn.Sequential(
   <img src="https://github.com/yudhisteer/Learning-3D-Vision-with-Inverse-Graphics/assets/59663734/3ba408e7-f03d-494d-9fa4-5c16c904a0bb" width="60%" />
 </p>
 
-Secondly, we change our **decoder** to fit the architecture of the paper [Pix2Vox](https://arxiv.org/abs/1901.11153) which uses **3D de-convolutional network** (**transpose convolution**) to upsample ```1 x 1 x 1 ch``` to ```N x N x N x ch```. Note that the latent code is what is actually encoding the ```scene``` (the image) and decoding the latents and decoding the latent will give us a ```scene representation``` (3D model). The input of the decoder is of size ```[batch_size, 512]``` and the output of it is ```[batch_size x 32 x 32 x 32]```.
+Secondly, we change our **decoder** to fit the architecture of the paper [Pix2Vox](https://arxiv.org/abs/1901.11153) which uses **3D de-convolutional network** (**transpose convolution**) to upsample ```1 x 1 x 1 ch``` to ```N x N x N x ch```. Note that the latent code is what is actually encoding the ```scene``` (the image) and decoding the latents will give us a ```scene representation``` (3D model). The input of the decoder is of size ```[batch_size, 512]``` and the output of it is ```[batch_size x 32 x 32 x 32]```.
 
 ```python
 self.fc = nn.Linear(512, 128 * 4 * 4 * 4)
@@ -512,8 +512,7 @@ for step in range(start_iter, args.max_iter):
     optimizer.step()
 ```
 
-After training for ```3000``` epochs with a batch size of ```32``` and a learning rate of ```4e-4```, we achive a loss of ```0.395```.
-
+After training for ```3000``` epochs with a batch size of ```32``` and a learning rate of ```4e-4```, we achive a loss of ```0.395```. For some reason, we got worst result with the deconvolutional network. In the paper, the authors describe their decoder as a coarse voxel generator before passing it into a refiner. We will continue with the MLP network for evaluation.
 
 <table style="width:100%">
   <tr>
@@ -525,7 +524,6 @@ After training for ```3000``` epochs with a batch size of ```32``` and a learnin
     <td style="text-align:center"><img src="https://github.com/yudhisteer/Learning-3D-Vision-with-Inverse-Graphics/assets/59663734/2e9b5a92-f5e5-4242-8f96-73ebe112b502" style="width:100%"/></td>
   </tr>
 </table>
-
 
 In the first row are the **single view image**, **ground truths** of the mesh and the second row is the **predicted voxels**.
 
@@ -567,20 +565,24 @@ In the first row are the **single view image**, **ground truths** of the mesh an
 --->
 
 ### 2.3 Fitting a Point Cloud
-
+Similarly, to fitting a voxel, we generate a point cloud with random ```xyz``` values. We define the ```chamfer loss``` function that will allow us to fit the random point cloud into our target point cloud again using the ```Adam``` optimizer.
 
 <p align="center">
   <img src="https://github.com/yudhisteer/Learning-3D-Vision-with-Inverse-Graphics/assets/59663734/be835f55-6da3-4b3e-8aa3-71aeea9d11b3" width="50%" />
 </p>
 
+Note that a point cloud represents a set of P points in 3D space. It can represent fine structures a huge numebr of poitns as we see below in the visualizations which uses ```1000``` points only. However, it does not explicitly represent the surface of the of a shape hence, we need to extract a mesh from the point cloud. I explain more about point cloud in my other projects: [Point Clouds: 3D Perception with Open3D](https://github.com/yudhisteer/Point-Clouds-3D-Perception-with-Open3D) and [Robotic Grasping Detection with PointNet](https://github.com/yudhisteer/Robotic-Grasping-Detection-with-PointNet).
 
+
+
+We train our data for 10000 iterations and observe the loss steadily decreases to about ```0.014```. This reflects effective learning and model optimization.
 
 <p align="center">
   <img src="https://github.com/yudhisteer/Learning-3D-Vision-with-Inverse-Graphics/assets/59663734/92ceddbd-e8a9-4e43-9d11-a8de9a2d232a" width="50%" />
 </p>
 
 
-
+Below are the visualization for the ```ground truth```, the ```fitted point cloud```, and the ```optimization progress``` results.
 
 <table style="width:100%">
   <tr>
@@ -610,7 +612,7 @@ In the first row are the **single view image**, **ground truths** of the mesh an
 
 
 <p align="center">
-  <img src="https://github.com/yudhisteer/Learning-3D-Vision-with-Inverse-Graphics/assets/59663734/9aaf18df-dfb7-4cfc-afc9-299aff4550c7" width="50%" />
+  <img src="https://github.com/yudhisteer/Learning-3D-Vision-with-Inverse-Graphics/assets/59663734/9aaf18df-dfb7-4cfc-afc9-299aff4550c7" width="70%" />
 </p>
 
 <p align="center">
