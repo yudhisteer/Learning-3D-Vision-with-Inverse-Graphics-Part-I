@@ -816,3 +816,4 @@ Below are the visualization for the ```ground truth```, the ```fitted point clou
 22. https://towardsdatascience.com/understanding-pytorch-loss-functions-the-maths-and-algorithms-part-2-104f19346425
 23. https://towardsdatascience.com/3d-object-classification-and-segmentation-with-meshcnn-and-pytorch-3bb7c6690302
 24. https://towardsdatascience.com/generating-3d-models-with-polygen-and-pytorch-4895f3f61a2e
+25. https://www.youtube.com/watch?v=S1_nCdLUQQ8&t
