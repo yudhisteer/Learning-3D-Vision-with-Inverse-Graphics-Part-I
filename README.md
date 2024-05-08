@@ -568,6 +568,13 @@ In the first row are the **single view image**, **ground truths** of the mesh an
 
 ### 2.3 Fitting a Point Cloud
 
+
+<p align="center">
+  <img src="https://github.com/yudhisteer/Learning-3D-Vision-with-Inverse-Graphics/assets/59663734/be835f55-6da3-4b3e-8aa3-71aeea9d11b3" width="50%" />
+</p>
+
+
+
 <p align="center">
   <img src="https://github.com/yudhisteer/Learning-3D-Vision-with-Inverse-Graphics/assets/59663734/92ceddbd-e8a9-4e43-9d11-a8de9a2d232a" width="50%" />
 </p>
@@ -606,7 +613,7 @@ In the first row are the **single view image**, **ground truths** of the mesh an
 ### 2.5 Fitting a Mesh
 
 <p align="center">
-  <img src="https://github.com/yudhisteer/Learning-3D-Vision-with-Inverse-Graphics/assets/59663734/40e4c04b-9a7c-49b6-b619-59885da478c1" width="50%" />
+  <img src="https://github.com/yudhisteer/Learning-3D-Vision-with-Inverse-Graphics/assets/59663734/00729a94-fff9-4ec0-817e-c560ab54aea3" width="50%" />
 </p>
 
 
