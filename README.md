@@ -609,6 +609,39 @@ In the first row are the **single view image**, **ground truths** of the mesh an
 ### 2.4 Image to Point Cloud
 
 
+<p align="center">
+  <img src="https://github.com/yudhisteer/Learning-3D-Vision-with-Inverse-Graphics/assets/59663734/9aaf18df-dfb7-4cfc-afc9-299aff4550c7" width="50%" />
+</p>
+
+<p align="center">
+  <img src="https://github.com/yudhisteer/Learning-3D-Vision-with-Inverse-Graphics/assets/59663734/2351598c-b455-477e-80a3-e8cd931c349e" width="50%" />
+</p>
+
+
+
+<table style="width:100%">
+  <tr>
+    <td><img src="https://github.com/yudhisteer/Learning-3D-Vision-with-Inverse-Graphics/assets/59663734/da6c2904-a621-4dfc-b131-e0e11640659b" style="width:100%"/></td>
+    <td><img src="https://github.com/yudhisteer/Learning-3D-Vision-with-Inverse-Graphics/assets/59663734/c72c8db4-a1c3-44bf-8f09-a5d1ae9235a0" style="width:100%"/></td>
+    <td><img src="https://github.com/yudhisteer/Learning-3D-Vision-with-Inverse-Graphics/assets/59663734/bb1d6a5e-b278-477b-860e-ef7a3a6234e5" style="width:100%"/></td>
+    <td><img src="https://github.com/yudhisteer/Learning-3D-Vision-with-Inverse-Graphics/assets/59663734/795aee60-b077-4753-8a34-dc0bda5cd613" style="width:100%"/></td>
+    <td><img src="https://github.com/yudhisteer/Learning-3D-Vision-with-Inverse-Graphics/assets/59663734/fa03a3ec-bba8-4833-8f07-2e894b72b1e5" style="width:100%"/></td>
+  </tr>
+  <tr>
+    <td><img src="https://github.com/yudhisteer/Learning-3D-Vision-with-Inverse-Graphics/assets/59663734/96fe276f-3799-44b0-a9e5-e0b13161692a" style="width:100%"/></td>
+    <td><img src="https://github.com/yudhisteer/Learning-3D-Vision-with-Inverse-Graphics/assets/59663734/5be9208e-ccd6-4fa4-bd43-c8206b79fd15" style="width:100%"/></td>
+    <td><img src="https://github.com/yudhisteer/Learning-3D-Vision-with-Inverse-Graphics/assets/59663734/e19ff2d2-d41f-4431-a354-ab41bddd0d36" style="width:100%"/></td>
+    <td><img src="https://github.com/yudhisteer/Learning-3D-Vision-with-Inverse-Graphics/assets/59663734/4fb9ef2b-9af5-40e1-aa3c-77864eeec91b" style="width:100%"/></td>
+    <td><img src="https://github.com/yudhisteer/Learning-3D-Vision-with-Inverse-Graphics/assets/59663734/5d42a8f7-1300-4f26-96ac-b3bc9ed4b9c8" style="width:100%"/></td>
+  </tr>
+  <tr>
+    <td><img src="https://github.com/yudhisteer/Learning-3D-Vision-with-Inverse-Graphics/assets/59663734/6de873b8-79b7-46fa-bf40-f7e3164a8b24" style="width:100%"/></td>
+    <td><img src="https://github.com/yudhisteer/Learning-3D-Vision-with-Inverse-Graphics/assets/59663734/073860f1-243a-481a-ad88-54dade190c42" style="width:100%"/></td>
+    <td><img src="https://github.com/yudhisteer/Learning-3D-Vision-with-Inverse-Graphics/assets/59663734/431bd2c8-87a7-414d-815f-3c7ee8fe80f4" style="width:100%"/></td>
+    <td><img src="https://github.com/yudhisteer/Learning-3D-Vision-with-Inverse-Graphics/assets/59663734/e4b9e5af-44cd-40ab-95ef-35d021cbd28b" style="width:100%"/></td>
+    <td><img src="https://github.com/yudhisteer/Learning-3D-Vision-with-Inverse-Graphics/assets/59663734/bd2e9863-a522-4e15-8e8f-34ed957a56d0" style="width:100%"/></td>
+  </tr>
+</table>
 
 ### 2.5 Fitting a Mesh
 
@@ -779,3 +812,5 @@ In the first row are the **single view image**, **ground truths** of the mesh an
 20. https://mobile.rodolphe-vaillant.fr/entry/86/implicit-surface-aka-signed-distance-field-definition
 21. https://www.youtube.com/watch?v=KnUFccsAsfs&t=2512s
 22. https://towardsdatascience.com/understanding-pytorch-loss-functions-the-maths-and-algorithms-part-2-104f19346425
+23. https://towardsdatascience.com/3d-object-classification-and-segmentation-with-meshcnn-and-pytorch-3bb7c6690302
+24. https://towardsdatascience.com/generating-3d-models-with-polygen-and-pytorch-4895f3f61a2e
