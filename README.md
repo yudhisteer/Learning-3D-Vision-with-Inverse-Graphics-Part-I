@@ -527,9 +527,16 @@ After training for ```3000``` epochs with a batch size of ```32``` and a learnin
 </table>
 
 
-In the first row are the **ground truths** and the second row is the **predicted voxels**.
+In the first row are the **single view image**, **ground truths** of the mesh and the second row is the **predicted voxels**.
 
 <table style="width:100%">
+  <tr>
+    <td><img src="https://github.com/yudhisteer/Learning-3D-Vision-with-Inverse-Graphics/assets/59663734/abb9c391-372d-4910-b9f8-2e76cd88fe4f" style="width:100%"/></td>
+    <td><img src="https://github.com/yudhisteer/Learning-3D-Vision-with-Inverse-Graphics/assets/59663734/7f2547fb-1dc3-4a09-ac72-9ab2142ed1c8" style="width:100%"/></td>
+    <td><img src="https://github.com/yudhisteer/Learning-3D-Vision-with-Inverse-Graphics/assets/59663734/4f267071-b1e0-4452-b24c-8c5c3fc88991" style="width:100%"/></td>
+    <td><img src="https://github.com/yudhisteer/Learning-3D-Vision-with-Inverse-Graphics/assets/59663734/342587bd-e886-41d3-b76e-d2258fd3c2ba" style="width:100%"/></td>
+    <td><img src="https://github.com/yudhisteer/Learning-3D-Vision-with-Inverse-Graphics/assets/59663734/86d07580-d209-47a2-8fb3-facb3122e083" style="width:100%"/></td>
+  </tr>
   <tr>
     <td><img src="https://github.com/yudhisteer/Learning-3D-Vision-with-Inverse-Graphics/assets/59663734/3a19d1bb-8b55-402b-9844-5b7b289c791a" style="width:100%"/></td>
     <td><img src="https://github.com/yudhisteer/Learning-3D-Vision-with-Inverse-Graphics/assets/59663734/bdf7004f-6f9a-412c-9a52-18a562901080" style="width:100%"/></td>
@@ -731,6 +738,8 @@ In the first row are the **ground truths** and the second row is the **predicted
 -------------------------
 <a name="ps"></a>
 ## 3. Photorealism Spectrum
+
+
 
 
 
