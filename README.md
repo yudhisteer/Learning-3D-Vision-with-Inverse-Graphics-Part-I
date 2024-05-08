@@ -583,15 +583,16 @@ To fit a point cloud, we need a differentiable way to compare pointclouds as set
 
 ```python
 from pytorch3d.ops import knn_points
-def chamfer_loss(point_cloud_src, point_cloud_tgt):
+def chamfer_loss(point_cloud_src: torch.Tensor, point_cloud_tgt: torch.Tensor) -> torch.Tensor:
+    # point_cloud_src: b x n_points x 3  
+    # point_cloud_tgt: b x n_points x 3  
     dist1 = knn_points(point_cloud_src, point_cloud_tgt)
     dist2 = knn_points(point_cloud_tgt, point_cloud_src)
     loss_chamfer = torch.sum(dist1.dists) + torch.sum(dist2.dists)
     return loss_chamfer
 ```
 
-
-We train our data for ```10000``` iterations and observe the loss steadily decreases to about ```0.014```.
+We train our data for ```10000``` iterations and observe the loss steadily decreases to about ```0.014``` Note that we have a lower loss compared to fitting a voxel.
 <p align="center">
   <img src="https://github.com/yudhisteer/Learning-3D-Vision-with-Inverse-Graphics/assets/59663734/92ceddbd-e8a9-4e43-9d11-a8de9a2d232a" width="50%" />
 </p>
