@@ -7,7 +7,7 @@
     - [Rendering Generic 3D Representations](#r3d)
 2. [Single View to 3D](#sv3d)
     - [Fitting a Voxel Grid](#fv)
-    - [Image to Vocel Grid](#iv)
+    - [Image to Voxel Grid](#iv)
     - [Fitting a Point Cloud](#fp)
     - [Image to Point Cloud](#ip)
     - [Fitting a Mesh](#fm)
