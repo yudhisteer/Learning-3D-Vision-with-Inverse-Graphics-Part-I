@@ -527,7 +527,7 @@ After training for ```3000``` epochs with a batch size of ```32``` and a learnin
   </tr>
 </table>
 
-In the first row are the **single view image**, **ground truths** of the mesh and the second row is the **predicted voxels**.
+In the first row are the **single view image**, **ground truths** of the mesh and the second row is the **predicted voxels**. Note that although we do not have a perfect 3D reconstruction wew can still delienate how the structure of the chairs from the voxelgrid matches the single view image and the 3D mesh.
 
 <table style="width:100%">
   <tr>
@@ -632,7 +632,7 @@ For single view image to 3D reconstruction, we will use a similar approach to th
 Our MLP has starts with an input feature vector of size ```512```, the model employs a series of fully connected layers with increasing size—```1024```, ```2048```, and ```4096```—each followed by a **LeakyReLU** activation with a negative slope of ```0.1```. The final layer expands the output to ```n_points * 3```, where n_point is the number of points each representing three coordinates ```(x, y, z)```. 
 
 <p align="center">
-  <img src="https://github.com/yudhisteer/Learning-3D-Vision-with-Inverse-Graphics/assets/59663734/9aaf18df-dfb7-4cfc-afc9-299aff4550c7" />
+  <img src="https://github.com/yudhisteer/Learning-3D-Vision-with-Inverse-Graphics/assets/59663734/9aaf18df-dfb7-4cfc-afc9-299aff4550c7" width="60%" />
 </p>
 
 ```python
@@ -656,7 +656,7 @@ We train our model for ```3000``` epochs with ```n_points = 5000```. The loss cu
   <img src="https://github.com/yudhisteer/Learning-3D-Vision-with-Inverse-Graphics/assets/59663734/2351598c-b455-477e-80a3-e8cd931c349e" width="50%" />
 </p>
 
-In the first row are the **single view image**, **ground truths** of the mesh and the second row is the **predicted pointcloud**.
+In the first row are the **single view image**, **ground truths** of the mesh and the second row is the **predicted pointcloud**. Notice that we have poor 3D reconstruction since we trained for only ```3000``` epochs. We will do a comparative analysis later on.
 
 <table style="width:100%">
   <tr>
