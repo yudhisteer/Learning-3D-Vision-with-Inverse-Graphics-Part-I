@@ -412,7 +412,7 @@ for step in tqdm(range(start_iter, args.max_iter)):
     optimizer.step()
 ```
 
-We train our data for 10000 iterations and observe the loss steadily decreases to about ```0.1```. This reflects effective learning and model optimization.
+We train our data for ```10000``` iterations and observe the loss steadily decreases to about ```0.1```.
 
 <p align="center">
   <img src="https://github.com/yudhisteer/Learning-3D-Vision-with-Inverse-Graphics/assets/59663734/a54c54b4-2104-4101-af49-e8299255e49b" width="50%" />
@@ -627,21 +627,36 @@ Below are the visualization for the ```ground truth```, the ```fitted point clou
 
 
 ### 2.4 Image to Point Cloud
-For single view image to 3D reconstruction, we will use a similar approach to that for the image-to-voxelgrid as shown above. We will have the ResNet18 encode the image into a latent code and build an MLP to decode the latter into ```N x 3``` output. Recall that the output of the encoder is of size ```[batch_size x 512]``` and the output of the decoder will be of size ```[batch_size x n_point x 3]```. Note that explicit prediction yields a fixed size point cloud denoted as ```n_point``` here. 
+For single view image to 3D reconstruction, we will use a similar approach to that for the image-to-voxelgrid as shown above. We will have the ResNet18 encode the image into a latent code and build an MLP to decode the latter into ```N x 3``` output. Recall that the output of the encoder is of size ```[batch_size x 512]``` and the output of the decoder will be of size ```[batch_size x n_points x 3]```. Note that explicit prediction yields a fixed size point cloud denoted as ```n_points``` here. 
 
-Our MLP has starts with an input feature vector of size ```512```, the model employs a series of fully connected layers with increasing size—```1024```, ```2048```, and ```4096```—each followed by a **LeakyReLU** activation with a negative slope of ```0.1```. The final layer expands the output to ```n_point * 3```, where n_point is the number of points each representing three coordinates ```(x, y, z)```. 
+Our MLP has starts with an input feature vector of size ```512```, the model employs a series of fully connected layers with increasing size—```1024```, ```2048```, and ```4096```—each followed by a **LeakyReLU** activation with a negative slope of ```0.1```. The final layer expands the output to ```n_points * 3```, where n_point is the number of points each representing three coordinates ```(x, y, z)```. 
 
 <p align="center">
-  <img src="https://github.com/yudhisteer/Learning-3D-Vision-with-Inverse-Graphics/assets/59663734/9aaf18df-dfb7-4cfc-afc9-299aff4550c7" width="70%" />
+  <img src="https://github.com/yudhisteer/Learning-3D-Vision-with-Inverse-Graphics/assets/59663734/9aaf18df-dfb7-4cfc-afc9-299aff4550c7" />
 </p>
 
-We train our model for ```3000``` epochs with ```n_point = 5000```
+```python
+# Input: b x 512
+# Output: b x args.n_points x 3 # b x N x 3
+self.n_point = args.n_points
+self.decoder = torch.nn.Sequential(
+    torch.nn.Linear(512, 1024),
+    torch.nn.LeakyReLU(0.1),
+    torch.nn.Linear(1024, 2048),
+    torch.nn.LeakyReLU(0.1),
+    torch.nn.Linear(2048, 4096),
+    torch.nn.LeakyReLU(0.1),
+    torch.nn.Linear(4096, self.n_point * 3),
+)
+```
+
+We train our model for ```3000``` epochs with ```n_points = 5000```. The loss curve depicts a rapid initial decrease followed by fluctuating stability at a ```0.1```.
 
 <p align="center">
   <img src="https://github.com/yudhisteer/Learning-3D-Vision-with-Inverse-Graphics/assets/59663734/2351598c-b455-477e-80a3-e8cd931c349e" width="50%" />
 </p>
 
-
+In the first row are the **single view image**, **ground truths** of the mesh and the second row is the **predicted pointcloud**.
 
 <table style="width:100%">
   <tr>
