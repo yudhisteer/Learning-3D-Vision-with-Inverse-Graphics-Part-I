@@ -575,7 +575,9 @@ Similarly, to fitting a voxel, we generate a point cloud with random ```xyz``` v
 
 Note that a point cloud represents a set of P points in 3D space. It can represent fine structures a huge numebr of poitns as we see below in the visualizations which uses ```1000``` points only. However, it does not explicitly represent the surface of the of a shape hence, we need to extract a mesh from the point cloud. I explain more about point cloud in my other projects: [Point Clouds: 3D Perception with Open3D](https://github.com/yudhisteer/Point-Clouds-3D-Perception-with-Open3D) and [Robotic Grasping Detection with PointNet](https://github.com/yudhisteer/Robotic-Grasping-Detection-with-PointNet).
 
-To fit a point cloud, we need a differentiable way to compare pointclouds as sets because **order does not matter**! We use the Chamfer distance which is the sum of L2 distance to each point's nearest neighbor in the other set. Suppose we have a gorund truth point cloud and a predicted point cloud. For each point in the ground truth set, we get its **nearest neighbor** in the predicted set, and their **Euclidean distance** is calculated. These distances are summed to form the first term of the equation below. Similarly, for each predicted point, the nearest ground truth point is found, and the distance to this neighbor is similarly summed to create the second term of the loss. The Chamfer loss is the total of these two sums, indicating the average mismatch between the two sets. A ```zero Chamfer loss```, signifying **perfect alignment**, occurs only when each point in one set **exactly coincides** with a point in the other set. Ibn summary, the chamfer loss guides the learning process by comparing the predicted point cloud against a ground truth set, regardless of the order of points in either set.
+To fit a point cloud, we need a differentiable way to compare pointclouds as sets because **order does not matter**! Therefore, we need a **permutation invariant** learning objective. We use the ```Chamfer distance``` which is the sum of L2 distance to each point's nearest neighbor in the other set. 
+
+Suppose we have a gorund truth point cloud and a predicted point cloud. For each point in the ground truth set, we get its **nearest neighbor** in the predicted set, and their **Euclidean distance** is calculated. These distances are summed to form the first term of the equation below. Similarly, for each predicted point, the nearest ground truth point is found, and the distance to this neighbor is similarly summed to create the second term of the loss. The Chamfer loss is the total of these two sums, indicating the average mismatch between the two sets. A ```zero Chamfer loss```, signifying **perfect alignment**, occurs only when each point in one set **exactly coincides** with a point in the other set. Ibn summary, the chamfer loss guides the learning process by comparing the predicted point cloud against a ground truth set, regardless of the order of points in either set.
 
 <p align="center">
   <img src="https://github.com/yudhisteer/Learning-3D-Vision-with-Inverse-Graphics/assets/59663734/737c31c4-f7a7-410c-b62b-e82e2dd148af" />
@@ -625,11 +627,15 @@ Below are the visualization for the ```ground truth```, the ```fitted point clou
 
 
 ### 2.4 Image to Point Cloud
+For single view image to 3D reconstruction, we will use a similar approach to that for the image-to-voxelgrid as shown above. We will have the ResNet18 encode the image into a latent code and build an MLP to decode the latter into ```N x 3``` output. Recall that the output of the encoder is of size ```[batch_size x 512]``` and the output of the decoder will be of size ```[batch_size x n_point x 3]```. Note that explicit prediction yields a fixed size point cloud denoted as ```n_point``` here. 
 
+Our MLP has starts with an input feature vector of size ```512```, the model employs a series of fully connected layers with increasing size—```1024```, ```2048```, and ```4096```—each followed by a **LeakyReLU** activation with a negative slope of ```0.1```. The final layer expands the output to ```n_point * 3```, where n_point is the number of points each representing three coordinates ```(x, y, z)```. 
 
 <p align="center">
   <img src="https://github.com/yudhisteer/Learning-3D-Vision-with-Inverse-Graphics/assets/59663734/9aaf18df-dfb7-4cfc-afc9-299aff4550c7" width="70%" />
 </p>
+
+We train our model for ```3000``` epochs with ```n_point = 5000```
 
 <p align="center">
   <img src="https://github.com/yudhisteer/Learning-3D-Vision-with-Inverse-Graphics/assets/59663734/2351598c-b455-477e-80a3-e8cd931c349e" width="50%" />
