@@ -1,11 +1,18 @@
-# Learning 3D Vision with Inverse Graphics
+# Learning 3D Vision with Inverse Graphics - Part I
 
 ## Plan of Action
 
 1. [Meshing Around](#ma)
+    - [Building Mesh by Mesh](#mm)
+    - [Rendering Generic 3D Representations](#r3d)
 2. [Single View to 3D](#sv3d)
-3. [Photorealism Spectrum](#ps)
-4. [Differential Rendering](#dr)
+    - [Fitting a Voxel Grid](#fv)
+    - [Image to Vocel Grid](#iv)
+    - [Fitting a Point Cloud](#fp)
+    - [Image to Point Cloud](#ip)
+    - [Fitting a Mesh](#fm)
+    - [Image to Mesh](#im)
+
 
 
 
@@ -39,6 +46,8 @@ triangle_mesh.gif_renderer(filename=filename, num_views=num_views)
   <img src="https://github.com/yudhisteer/Rendering-Basics-with-PyTorch3D/assets/59663734/8aa00eb7-2e95-4a59-84b8-1502aec647aa" width="20%" />
 </p>
 
+
+<a name="mm"></a>
 ### 1.1 Building mesh by mesh
 
 Now that we have built a triangular mesh. We can use this as a base to create more complex 3D models such as a **cube**. Note that we need to use ```two``` sets of triangle faces to represent ```one``` face of the cube. Our cube will have ```8``` vertices and ```12``` triangular faces. Below is a step-by-step of joining all the 12 faces to form the final cube:
@@ -278,6 +287,7 @@ plt.show()
 </p>
 
 
+<a name="r3d"></a>
 ### 1.2 Rendering Generic 3D Representations
 
 #### 1.2.1 Rendering Point Clouds from RGB-D Images
@@ -365,6 +375,8 @@ Below is an example whereby we take a triangle mesh and the number of samples an
   <img src="https://github.com/yudhisteer/Learning-3D-Vision-with-Inverse-Graphics/assets/59663734/0f30d9b9-65d9-4156-8eae-e7b703f17172" width="80%" />
 </p>
 
+
+<a name="fv"></a>
 ### 2.1 Fitting a Voxel Grid 
 To fit a voxel, we wil first generate a **randomly initalized** voxel of size ```[b x h x w x d]``` and define a **binary cross entropy (BCE)** loss that can help us fit a **3D binary voxel grid** using the ```Adam``` optimizer. 
 
@@ -444,7 +456,7 @@ Below are the visualization for the ```ground truth```, the ```fitted voxels```,
 </table>
 
 
-
+<a name="iv"></a>
 ### 2.2 Image to voxel grid
 Fitting a voxel grid is easy but now we want to 3D reconstruct a vocel grid from a single image only. For that, we will make use of an ```auto-encoder``` which first ```encode``` the **image** into **latent code** using a ```2D encoder```. We use a **pre-trained** ```ResNet-18``` model from ```torchvision``` to extract **features** from the image. The final classification layer is to make it a ```feature encoder```. Our image will be transformed to a ```latent code```.
 
@@ -566,6 +578,7 @@ In the first row are the **single view image**, **ground truths** of the mesh an
 </p>
 --->
 
+<a name="fp"></a>
 ### 2.3 Fitting a Point Cloud
 Similarly, to fitting a voxel, we generate a point cloud with random ```xyz``` values. We define the ```chamfer loss``` function that will allow us to fit the random point cloud into our target point cloud again using the ```Adam``` optimizer.
 
@@ -626,6 +639,7 @@ Below are the visualization for the ```ground truth```, the ```fitted point clou
 </table>
 
 
+<a name="ip"></a>
 ### 2.4 Image to Point Cloud
 For single view image to 3D reconstruction, we will use a similar approach to that for the image-to-voxelgrid as shown above. We will have the ResNet18 encode the image into a latent code and build an MLP to decode the latter into ```N x 3``` output. Recall that the output of the encoder is of size ```[batch_size x 512]``` and the output of the decoder will be of size ```[batch_size x n_points x 3]```. Note that explicit prediction yields a fixed size point cloud denoted as ```n_points``` here. 
 
@@ -682,6 +696,9 @@ In the first row are the **single view image**, **ground truths** of the mesh an
   </tr>
 </table>
 
+
+
+<a name="fm"></a>
 ### 2.5 Fitting a Mesh
 
 <p align="center">
@@ -774,7 +791,7 @@ In the first row are the **single view image**, **ground truths** of the mesh an
 
 
 
-
+<a name="im"></a>
 ### 2.6 Image to Mesh
 
 
@@ -814,20 +831,12 @@ In the first row are the **single view image**, **ground truths** of the mesh an
   </tr>
 </table>
 
--------------------------
-<a name="ps"></a>
-## 3. Photorealism Spectrum
-
-
 
 
 
 -------------------------
-<a name="dr"></a>
-## 4. Differential Rendering
 
 
--------------------------
 ## References
 1. https://www.andrew.cmu.edu/course/16-889/projects/
 2. https://www.andrew.cmu.edu/course/16-825/projects/
