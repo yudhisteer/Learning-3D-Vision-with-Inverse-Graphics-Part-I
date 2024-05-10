@@ -767,13 +767,14 @@ Note that the same shape can be represented with different meshes. For example, 
 
 We **sample points** from the surface of the **ground-truth mesh** (**offline**) and sample points from the surface of the **predicted mesh** (**online**) and compute the **loss** between these two sets of points using the ```Chamfer distance```. However, only minimizing the chamfer distance between the predicted and the target mesh will lead to a **non-smooth shape**. We then have a ```smoothness loss``` using **laplacian smoothing** which ensures that the deformations do not produce overly sharp/disjointed geometries, maintaining a smooth surface. We combine both losses with **weighting factors**.
 
+Below is the loss curce starting with an icosphere level ```4```.
 
 <p align="center">
   <img src="https://github.com/yudhisteer/Learning-3D-Vision-with-Inverse-Graphics/assets/59663734/900a6749-bae1-41fe-b9cc-e814da213846" width="50%" />
 </p>
 
 
-
+Note that an icosphere is a sphere based on an **icosahedron** which is a three-dimensional shape with ```20``` equilateral triangular faces. The icosahedron has ```12``` vertices and ```30``` edges. This is for us an icosphere of level ```1```.
 
 
 <table style="width:100%">
