@@ -588,7 +588,23 @@ Similarly, to fitting a voxel, we generate a point cloud with random ```xyz``` v
 
 Note that a point cloud represents a set of P points in 3D space. It can represent fine structures a huge numebr of poitns as we see below in the visualizations which uses ```1000``` points only. However, it does not explicitly represent the surface of the of a shape hence, we need to extract a mesh from the point cloud. I explain more about point cloud in my other projects: [Point Clouds: 3D Perception with Open3D](https://github.com/yudhisteer/Point-Clouds-3D-Perception-with-Open3D) and [Robotic Grasping Detection with PointNet](https://github.com/yudhisteer/Robotic-Grasping-Detection-with-PointNet).
 
-To fit a point cloud, we need a differentiable way to compare pointclouds as sets because **order does not matter**! Therefore, we need a **permutation invariant** learning objective. We use the ```Chamfer distance``` which is the sum of L2 distance to each point's nearest neighbor in the other set. 
+To fit a point cloud, we need a differentiable way to compare pointclouds as sets because **order does not matter**! Therefore, we need a **permutation invariant** learning objective. We use the ```Chamfer distance``` which is the sum of L2 distance to each point's nearest neighbor in the other set.
+
+```python
+# Generate pointcloud source with randomly initialized values
+pointclouds_src = torch.randn([1, args.n_points, 3], requires_grad=True, device=args.device)
+# Initialize optimizer to optimize pointcloud source
+optimizer = torch.optim.Adam([pointclouds_src], lr=args.lr)
+for step in range(start_iter, args.max_iter):
+    # Calculate loss
+    loss = losses.chamfer_loss(pointclouds_src, pointclouds_tgt)
+    # Zero the gradients before backpropagation.
+    optimizer.zero_grad()
+    # Backpropagate the loss to compute the gradients.
+    loss.backward()
+    # Update the model parameters based on the computed gradients.
+    optimizer.step()
+```
 
 Suppose we have a gorund truth point cloud and a predicted point cloud. For each point in the ground truth set, we get its **nearest neighbor** in the predicted set, and their **Euclidean distance** is calculated. These distances are summed to form the first term of the equation below. Similarly, for each predicted point, the nearest ground truth point is found, and the distance to this neighbor is similarly summed to create the second term of the loss. The Chamfer loss is the total of these two sums, indicating the average mismatch between the two sets. A ```zero Chamfer loss```, signifying **perfect alignment**, occurs only when each point in one set **exactly coincides** with a point in the other set. Ibn summary, the chamfer loss guides the learning process by comparing the predicted point cloud against a ground truth set, regardless of the order of points in either set.
 
@@ -700,7 +716,7 @@ In the first row are the **single view image**, **ground truths** of the mesh an
 
 <a name="fm"></a>
 ### 2.5 Fitting a Mesh
-Finally, we want to fit a mesh by deforming an initial generic shape to fit a target mesh.
+Finally, we want to fit a mesh by deforming an initial generic shape to fit a target mesh. The process is a bit different from fitting a voxelgrid or pointcloud.
 
 <p align="center">
   <img src="https://github.com/yudhisteer/Learning-3D-Vision-with-Inverse-Graphics/assets/59663734/00729a94-fff9-4ec0-817e-c560ab54aea3" width="50%" />
