@@ -700,10 +700,56 @@ In the first row are the **single view image**, **ground truths** of the mesh an
 
 <a name="fm"></a>
 ### 2.5 Fitting a Mesh
+Finally, we want to fit a mesh by deforming an initial generic shape to fit a target mesh.
 
 <p align="center">
   <img src="https://github.com/yudhisteer/Learning-3D-Vision-with-Inverse-Graphics/assets/59663734/00729a94-fff9-4ec0-817e-c560ab54aea3" width="50%" />
 </p>
+
+Below are the steps for **iterative mesh refinement**:
+1. We start by creating an **ico-sphere** mesh which will be our **source mesh**: ```mesh_src```.
+2.  We initialize ```deform_vertices_src``` as a **random** or **zero** tensor with ```requires_grad=True``` to make it a **learnable parameter** that can be **optimized**. The Adam optimizer is set up to update ```deform_vertices_src``` during training.
+3.  Within each step in the training loop, we create a **new mesh** ```new_mesh_src``` by **offsetting** the vertices of ```mesh_src``` using the **learned deformation values** - ```deform_vertices_src```.
+
+```python
+    # start from scospahere mesh
+    mesh_src = ico_sphere(5, args.device)
+
+    # Randomly initialized
+    deform_vertices_src = torch.randn(mesh_src.verts_packed().shape, requires_grad=True, device="cuda")
+
+    # Initialize the Adam optimizer with model parameters and learning rate
+    optimizer = torch.optim.Adam([deform_vertices_src], lr=args.lr)
+
+    for step in range(start_iter, args.max_iter):
+
+        # Create a new mesh with vertices offset by deform_vertices_src
+        new_mesh_src = mesh_src.offset_verts(deform_vertices_src)
+
+        # Sample points from the target and source meshes
+        sample_trg = sample_points_from_meshes(mesh_tgt, args.n_points)
+        sample_src = sample_points_from_meshes(new_mesh_src, args.n_points)
+
+        # Calculate the Chamfer loss between the sampled points
+        loss_reg = chamfer_loss(sample_src, sample_trg)
+
+        # Calculate the smoothness loss for the new mesh
+        loss_smooth = smoothness_loss(new_mesh_src)
+
+        # Combine losses with weighting factors
+        loss = args.w_chamfer * loss_reg + args.w_smooth * loss_smooth
+
+        # Zero the gradients before backpropagation
+        optimizer.zero_grad()
+        # Compute gradients through backpropagation
+        loss.backward()
+        # Update the deformable vertex offsets
+        optimizer.step()
+```
+
+Note that the same shape can be represented with different meshes. For example, we can represent the surface of a cube with ```2``` triangular mesh or ```4``` small triangular meshes. By taking this into account, how can we define a loss function between predicted and ground-truth mesh such that  it is **invariant** to the way we represent shape with triangles? We want a loss function to depend on the **underlying shape**. In order to do that, we will convert our **mesh** into **pointcloud** and then compute **loss**!
+
+We **sample points** from the surface of the **ground-truth mesh** (**offline**) and sample points from the surface of the **predicted mesh** (**online**) and compute the **loss** between these two sets of points using the ```Chamfer distance```. However, only minimizing the chamfer distance between the predicted and the target mesh will lead to a **non-smooth shape**. We then have a ```smoothness loss``` using **laplacian smoothing** which ensures that the deformations do not produce overly sharp/disjointed geometries, maintaining a smooth surface. We combine both losses with **weighting factors**.
 
 
 <p align="center">
