@@ -774,7 +774,9 @@ Below is the loss curce starting with an icosphere level ```4```.
 </p>
 
 
-Note that an icosphere is a sphere based on an **icosahedron** which is a three-dimensional shape with ```20``` equilateral triangular faces. The icosahedron has ```12``` vertices and ```30``` edges. This is for us an icosphere of level ```1```.
+Note that an icosphere is a sphere based on an **icosahedron** which is a three-dimensional shape with ```20``` equilateral triangular faces. The icosahedron has ```12``` vertices and ```30``` edges. This is for us an icosphere of level ```0```. Below we try with icospheres of level ```1``` to ```5``` which has faces and vertices of ```80-42```, ```320-162```, ```1280-642```, ```5120-2562```, ```20480-10242``` respectively. 
+
+We observe that can icosphere of low level gives us a poor fitted mesh. This is because of we have a limited number of faces and vertices. When fitting a mesh we are not creating new vertices but instead optimizing their position. Hence, an icosphere of higher level gives us a finer-detailed fitted mesh.
 
 
 <table style="width:100%">
@@ -823,7 +825,7 @@ Note that an icosphere is a sphere based on an **icosahedron** which is a three-
 </table>
 
 
-
+Instead of starting from an icosphere, we can also start from a **random generated mesh**. In the third row, we have the same number of vertices as an icosphere of level ```5``` and we observe that it will take us more than ```10000``` iterations to have a better fitted mesh compared to if we started with an icosphere and we have more overly-sharp geometries. We will do more comparative analysis later on.
 
 <table style="width:100%">
   <tr>
