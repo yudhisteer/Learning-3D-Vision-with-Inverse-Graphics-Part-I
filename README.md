@@ -966,3 +966,5 @@ In the first row are the **single view image**, **ground truths** of the mesh an
 23. https://towardsdatascience.com/3d-object-classification-and-segmentation-with-meshcnn-and-pytorch-3bb7c6690302
 24. https://towardsdatascience.com/generating-3d-models-with-polygen-and-pytorch-4895f3f61a2e
 25. https://www.youtube.com/watch?v=S1_nCdLUQQ8&t
+26. https://www.youtube.com/watch?v=IxAwhW4gP_c
+27. https://www.youtube.com/watch?v=VOKgMJEc_ro
