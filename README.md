@@ -477,6 +477,9 @@ self.decoder = torch.nn.Sequential(
 Secondly, we change our **decoder** to fit the architecture of the paper [Pix2Vox](https://arxiv.org/abs/1901.11153) which uses **3D de-convolutional network** (**transpose convolution**) to upsample ```1 x 1 x 1 ch``` to ```N x N x N x ch```. Note that the latent code is what is actually encoding the ```scene``` (the image) and decoding the latents will give us a ```scene representation``` (3D model). The input of the decoder is of size ```[batch_size, 512]``` and the output of it is ```[batch_size x 32 x 32 x 32]```.
 
 ```python
+# Input: b x 512
+# Output: b x 32 x 32 x 32
+
 self.fc = nn.Linear(512, 128 * 4 * 4 * 4)
 self.decoder = nn.Sequential(
     nn.ConvTranspose3d(128, 64, kernel_size=4, stride=2, padding=1),
@@ -668,6 +671,7 @@ Our MLP has starts with an input feature vector of size ```512```, the model emp
 ```python
 # Input: b x 512
 # Output: b x args.n_points x 3 # b x N x 3
+
 self.n_point = args.n_points
 self.decoder = torch.nn.Sequential(
     torch.nn.Linear(512, 1024),
@@ -765,7 +769,11 @@ Below are the steps for **iterative mesh refinement**:
 
 Note that the same shape can be represented with different meshes. For example, we can represent the surface of a cube with ```2``` triangular mesh or ```4``` small triangular meshes. By taking this into account, how can we define a loss function between predicted and ground-truth mesh such that  it is **invariant** to the way we represent shape with triangles? We want a loss function to depend on the **underlying shape**. In order to do that, we will convert our **mesh** into **pointcloud** and then compute **loss**!
 
-We **sample points** from the surface of the **ground-truth mesh** (**offline**) and sample points from the surface of the **predicted mesh** (**online**) and compute the **loss** between these two sets of points using the ```Chamfer distance```. However, only minimizing the chamfer distance between the predicted and the target mesh will lead to a **non-smooth shape**. We then have a ```smoothness loss``` using **laplacian smoothing** which ensures that the deformations do not produce overly sharp/disjointed geometries, maintaining a smooth surface. We combine both losses with **weighting factors**.
+We **sample points** from the surface of the **ground-truth mesh** (**offline**) and sample points from the surface of the **predicted mesh** (**online**) and compute the **loss** between these two sets of points using the ```Chamfer distance```. However, only minimizing the chamfer distance between the predicted and the target mesh will lead to a **non-smooth shape**. We then have a ```smoothness loss``` using **laplacian smoothing** which ensures that the deformations do not produce overly sharp/disjointed geometries, maintaining a smooth surface. This smoothing function constraint each vertex to stay along with its **neighbor**. We combine both losses with **weighting factors**.
+
+<p align="center">
+  <img src="https://github.com/yudhisteer/Learning-3D-Vision-with-Inverse-Graphics-Part-I/assets/59663734/57ba15fb-e673-4e5e-9106-9bbbcef54aa7" />
+</p>
 
 Below is the loss curce starting with an icosphere level ```4```.
 
@@ -858,19 +866,49 @@ Instead of starting from an icosphere, we can also start from a **random generat
 
 <a name="im"></a>
 ### 2.6 Image to Mesh
+Single view 3D reconstruction for mesh is also different in the sense that we are not explicitly predicting meshes but instead deforming a source mesh. For voxelgrid and pointcloud, we are encoding an image and then we reshape the output of the decoder so that it fits the shape of either the voxelgrid or pointcloud. For meshes, we will start from an icosphere mesh and then offset each vertex using learnable parameters such that the predicted mesh is closer to the target mesh at each optimization step.
 
+<p align="center">
+  <img src="https://github.com/yudhisteer/Learning-3D-Vision-with-Inverse-Graphics-Part-I/assets/59663734/08eae294-0e0b-4a1c-ba1b-316dd230773e" width="70%" />
+</p>
 
+For the decoder, I used a similar MLP architecture to that of the image-to-point cloud as above except that I used ReLU insetad of LeakyReLU.
+
+```python
+# Input: b x 512
+# Output: b x mesh_pred.verts_packed().shape[0] x 3
+
+# Initialize source mesh
+mesh_pred = ico_sphere(4, self.device)
+self.mesh_pred = pytorch3d.structures.Meshes(mesh_pred.verts_list() * args.batch_size, mesh_pred.faces_list() * args.batch_size)
+
+self.decoder = torch.nn.Sequential(
+    torch.nn.Linear(512, 1024),
+    torch.nn.ReLU(),
+    torch.nn.Linear(1024, 2048),
+    torch.nn.ReLU(),
+    torch.nn.Linear(2048, 4096),
+    torch.nn.ReLU(),
+    nn.Linear(4096, self.mesh_pred.verts_list()[0].shape[0] * 3))
+
+def forward(self, images, args):
+    deform_vertices_pred  = self.decoder(encoded_feat)
+    mesh_pred = self.mesh_pred.offset_verts(deform_vertices_pred.reshape([-1, 3]))
+    return mesh_pred
+```
 
 <p align="center">
   <img src="https://github.com/yudhisteer/Learning-3D-Vision-with-Inverse-Graphics/assets/59663734/726ea258-08de-4336-84f1-ff564fa6ae41" width="80%" />
 </p>
+
+Similarly, we train our model for ```3000``` epcochs and loss weights of ```w_chamfer=1.0``` and ```w_smooth=0.1```. For the loss curve, we have a sharp  decrease but notice that the graph is less noisy compared to the voxelgrid or pointcloud ones.
 
 
 <p align="center">
   <img src="https://github.com/yudhisteer/Learning-3D-Vision-with-Inverse-Graphics/assets/59663734/d71effb6-24f6-4b8e-88d1-a8a3a739dc6f" width="50%" />
 </p>
 
-
+In the first row are the **single view image**, **ground truths** of the mesh and the second row is the **predicted mesh**.
 
 <table style="width:100%">
   <tr>
