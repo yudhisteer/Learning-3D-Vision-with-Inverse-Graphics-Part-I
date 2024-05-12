@@ -937,9 +937,33 @@ In the first row are the **single view image**, **ground truths** of the mesh an
   </tr>
 </table>
 
+Now some important note about mesh deformation. The latter gives good results but the topology is fixed by the initial mesh. That is, depending on our starting mesh, we are constraint by the topology of the 3D shapes we can output. Mesh deformation only works if the shape we need to output has the same topology as the initial 3D mesh source. But what do I mean by same topology?
+
+To a topologist, a doughnut, coffee mug, and a straw are all the **same**! They all have one hole and is said to be **homeomorphic** to each other because we can continuously deform one into the other. However, a doughnut would **not** be homeomorphic to a sphere. Considering polyhedron shapes such as a cube, a pyramid and the icosahedron we saw above. They all have a **Euler Characteristic** (X) of ```2``` given by the formula below.
+
+<p align="center">
+  <img src="https://github.com/yudhisteer/Learning-3D-Vision-with-Inverse-Graphics-Part-I/assets/59663734/dcfae755-681e-4dec-baa5-0c9d2cc4cad4"/>
+</p>
+
+Similar for a **sphere** which has an **infinite** number of faces, edges and vertices and yet is Euler Characteristic is still ```2```. We say that if two objects are **homeomorphic** to each other then they have the same Euler Characterisitic. Which then also means that we can deform one object into another as long as they have the same Euler Characteristic. 
 
 
+<p align="center">
+  <img src="https://github.com/yudhisteer/Learning-3D-Vision-with-Inverse-Graphics-Part-I/assets/59663734/197530f2-e159-4906-b05e-b68e2540fdab" width="40%"/>
+</p>
+<div align="center">
+    <p>Video source: <a href="https://lovessivs.life/product_details/49674091.html">Topology joke</a></p>
+</div>
 
+
+Similarly, a doughnut which has a hole in the middle has the shape of a torus and has a Euler Characteristic of ```0```. Hence, this is the reason why it **cannot** be formed into a sphere which has a Euler Characteristic of ```2```. In our project, we are trying to model a chair from a icosahedron mesh. Consider a chair where the legs, seat, and backrest are all modeled as rectangular prisms and we'll need to consider the shared vertices and edges at their junctions. A rectangular prism has ```8``` vertices, ```12``` edges and ```6``` faces. Applying Euler's formula we get a Euler Characteristic of ```12```. 
+
+<p align="center">
+  <img src="https://github.com/yudhisteer/Learning-3D-Vision-with-Inverse-Graphics-Part-I/assets/59663734/18d33765-77ab-4326-aa06-0fbf9a8e26c1" width="20%"/>
+</p>
+
+
+In our dataset we have a variety of chairs with and without hole/s ad this means they have different Euler Characteristic. However, we have been using a icosahedron to model all of them hence, the reason why we have not been able to have holes in our predicted mesh and why the 3D reconstructed mesh is of poor quality.
 
 <a name="em"></a>
 ### 2.6 Evaluation Metrics
