@@ -12,7 +12,9 @@
     - [Image to Point Cloud](#ip)
     - [Fitting a Mesh](#fm)
     - [Image to Mesh](#im)
+    - [Evaluation Metrics](#em)
 3. [Occupancy Network](#on)
+4. [Single View to 3D to AR](#ar)
 
 
 
@@ -936,9 +938,37 @@ In the first row are the **single view image**, **ground truths** of the mesh an
 </table>
 
 
+
+
+
+<a name="em"></a>
+### 2.6 Evaluation Metrics
+
+
 -------------------------
 <a name="on"></a>
 ## 3. Occupancy Network
+
+
+
+
+
+
+-------------------------
+<a name="ar"></a>
+## 4. Single View to 3D to AR
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 -------------------------
