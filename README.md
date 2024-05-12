@@ -943,7 +943,54 @@ In the first row are the **single view image**, **ground truths** of the mesh an
 
 <a name="em"></a>
 ### 2.6 Evaluation Metrics
+Now to evaluate if our predictions closely match the ground truths, we will need a metric. 
 
+**1. Volumetric IoU**
+
+3D IoU is defined as the volume of the **intersection** of two meshes divided by the volume of their **union**. However, it is not always straightfoward to use it.
+
+- If no watertight meshes, 3D IoU cannot be used.
+- For meshes, we need to voxelize or sample.
+- It cannot capture thin sructures.
+- Cannot be used for point clouds as no connectivity.
+- It is not very meaningful at low values.
+
+I explain more about IoU in my other project: [Real-time Multi-Object Tracking for Rescue Operations](https://github.com/yudhisteer/Real-time-Multi-Object-Tracking-for-Rescue-Operations)
+
+<p align="center">
+  <img src="https://github.com/yudhisteer/Learning-3D-Vision-with-Inverse-Graphics-Part-I/assets/59663734/7cf85f70-ef90-41ae-a34e-25b9da190e71" />
+</p>
+
+**2. Chamfer Distance**
+
+Above, we used Chamfer Distance to evaluate point cloud. However, one disadvantage of it is that since it relies on **L2 distance**, this makes it sensitive to **outliers**!
+
+<p align="center">
+  <img src="https://github.com/yudhisteer/Learning-3D-Vision-with-Inverse-Graphics-Part-I/assets/59663734/b2c76635-a954-486a-a42a-95346fea797c" />
+</p>
+
+**3. F1-score@t**
+
+In order to calculate the F1-score, we will need to sample points from the surface of our predictions and groud-truths. F1-score is a better metric as it is **robust to outliers** as shown below.
+
+**Precision@t** is defined as the fraction of predicted points within some range ```t``` of some ground-truth point. From the image below, the precision@t is ```3/4```.
+
+<p align="center">
+  <img src="https://github.com/yudhisteer/Learning-3D-Vision-with-Inverse-Graphics-Part-I/assets/59663734/e9368734-6470-49c5-9ed7-524313e5d030" width="50%"/>
+</p>
+
+
+**Recall@t** is defined as the fraction of ground-truth points within some range t of some predicted point. From the image below, the recall@t is ```2/3```.
+
+<p align="center">
+  <img src="https://github.com/yudhisteer/Learning-3D-Vision-with-Inverse-Graphics-Part-I/assets/59663734/dbb6690a-c658-4d4e-aa39-24faa9acebee" width="50%"/>
+</p>
+
+Hence, the F1-score@t is given by the formula below. For our example our F1-score@t is approx. ```0.70```.
+
+<p align="center">
+  <img src="https://github.com/yudhisteer/Learning-3D-Vision-with-Inverse-Graphics-Part-I/assets/59663734/719f6e3b-7f07-4b9a-8941-a1ec9d7dab50"/>
+</p>
 
 -------------------------
 <a name="on"></a>
