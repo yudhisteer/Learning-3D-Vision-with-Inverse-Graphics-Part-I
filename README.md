@@ -14,7 +14,6 @@
     - [Image to Mesh](#im)
     - [Evaluation Metrics](#em)
 3. [Occupancy Network](#on)
-4. [Single View to 3D to AR](#ar)
 
 
 
@@ -1019,16 +1018,6 @@ Hence, the F1-score@t is given by the formula below. For our example our F1-scor
 -------------------------
 <a name="on"></a>
 ## 3. Occupancy Network
-
-
-
-
-
-
--------------------------
-<a name="ar"></a>
-## 4. Single View to 3D to AR
-
 
 
 
